@@ -1,11 +1,10 @@
 import asyncio
-import logging
 import json
+import logging
 
 import aiocoap
 import aiocoap.resource as resource
-
-from db.db import write_temp
+from database import write_temp
 
 
 class ActiveThing(resource.Resource):
@@ -18,13 +17,11 @@ class ActiveThing(resource.Resource):
     async def render_post(request):
         logging.info(request.remote.hostinfo)
         payload = request.payload.decode('utf8')
-        parse_payload(payload)
+        # parse_payload(payload)
         logging.info(payload)
         text = "Hello world"
         return aiocoap.Message(code=aiocoap.CREATED,
                                payload=text.encode('utf8'))
-
-
 
 
 class ThingWrite(resource.Resource, resource.PathCapable):
@@ -89,7 +86,7 @@ logging.basicConfig(level=logging.INFO)
 logging.getLogger("coap-server").setLevel(logging.DEBUG)
 
 
-async def main():
+async def server():
     # Resource tree creation
     site = resource.Site()
 
@@ -97,10 +94,5 @@ async def main():
     site.add_resource(['things'], ThingWrite())
 
     await aiocoap.Context.create_server_context(site, bind=("0.0.0.0", 1222))
-
     # Run forever
     await asyncio.get_running_loop().create_future()
-
-
-if __name__ == "__main__":
-    asyncio.run(main())

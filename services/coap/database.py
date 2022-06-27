@@ -1,37 +1,21 @@
 import psycopg2
-from config import CONNECTION
+import config
 
-def create_tables(conn):
-    query_create_sensors_table = "CREATE TABLE sensors (id SERIAL PRIMARY KEY, type VARCHAR(50), eui64 VARCHAR(50));"
-    cursor = conn.cursor()
-    cursor.execute(query_create_sensors_table)
-    conn.commit()
-    cursor.close()
-
-    query_create_sensordata_table = """CREATE TABLE sensor_data (
-                                               time TIMESTAMPTZ NOT NULL,
-                                               sensor_id INTEGER,
-                                               temperature DOUBLE PRECISION,
-                                               FOREIGN KEY (sensor_id) REFERENCES sensors (id)
-                                               );"""
-    query_create_sensordata_hypertable = "SELECT create_hypertable('sensor_data', 'time');"
+from table_init import query_create_db, timescale_extension_init, query_create_sensors_table, \
+    query_create_sensordata_table, query_create_hypertable
 
 
-def write(conn, sensor_data):
-    sql_sensors_insert = "INSERT INTO sensors (type, eui64) VALUES (%s, %s);"
-    cursor = conn.cursor()
-    try:
-        data = (sensor_data[0], sensor_data[1])
-        cursor.execute(sql_sensors_insert, data)
-    except (Exception, psycopg2.Error) as error:
-        print(error.pgerror)
-    conn.commit()
+def create_tables():
+    with psycopg2.connect(config.Config.SQLALCHEMY_DATABASE_URI) as conn:
+        cursor = conn.cursor()
+        cursor.execute(query_create_sensors_table)
+        cursor.execute(query_create_sensordata_table)
+        cursor.execute(query_create_hypertable)
+        conn.commit()
 
-def write_data(sensor_data):
-    sql_data_insert = "INSERT INTO sensor_data(time, sensor_id, temperature) VALUES(now(), %s, %s)"
 
 def write_temp(payload):
-    with psycopg2.connect(CONNECTION) as conn:
+    with psycopg2.connect(config.Config.SQLALCHEMY_DATABASE_URI) as conn:
         try:
             cursor = conn.cursor()
             sql_data_insert = "INSERT INTO sensor_data(time, sensor_id, temperature) VALUES(now(), 1, %s);"
@@ -40,9 +24,10 @@ def write_temp(payload):
             print(error)
         conn.commit()
 
-def main():
-    with psycopg2.connect(CONNECTION) as conn:
+
+def create_db():
+    with psycopg2.connect(config.Config.SQLALCHEMY_DATABASE_URI) as conn:
         cursor = conn.cursor()
-        # use the cursor to interact with your database
-        cursor.execute("SELECT * FROM table")
-        print(cursor.fetchone())
+        cursor.execute(query_create_db)
+        cursor.execute(timescale_extension_init)
+

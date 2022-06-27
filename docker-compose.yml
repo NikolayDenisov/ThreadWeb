@@ -3,7 +3,12 @@ version: '3.7'
 services:
   web:
     build: ./services/web
-    command: python manage.py run -h 0.0.0.0
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=example
+      - TZ="Europe/Moscow"
+    command: /bin/bash -c "rm -rf /etc/localtime && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && date +%Z" && python manage.py run -h 0.0.0.0
     volumes:
       - ./services/web/:/usr/src/app/
       - static_volume:/home/app/web/project/static
@@ -21,27 +26,29 @@ services:
     - POSTGRES_USER=postgres
     - POSTGRES_PASSWORD=password
     - POSTGRES_DB=example
+    - TZ="Europe/Moscow"
+    command:
+      - /bin/bash -c "rm -rf /etc/localtime && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && date +%Z"
   coap:
     build: ./services/coap
-    command: python manage.py run -h 0.0.0.0
+    command: python manage.py run
     volumes:
       - ./services/web/:/usr/src/app/
     ports:
-      - "5683:5683/udp"
+      - "5683:1222/udp"
     env_file:
       - ./.env.dev
     depends_on:
       - db
-#  nginx:
-#    build: ./services/nginx
-#    volumes:
-#      - static_volume:/home/app/web/project/static
-#    ports:
-#      - 1337:80
-#    depends_on:
-#      - web
-#      - coap
-
+  nginx:
+    build: ./services/nginx
+    volumes:
+      - static_volume:/home/app/web/project/static
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+      - coap
 volumes:
   postgres_data:
   static_volume:
