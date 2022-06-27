@@ -8,7 +8,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=example
       - TZ="Europe/Moscow"
-    command: /bin/bash -c "rm -rf /etc/localtime && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && date +%Z" && python manage.py run -h 0.0.0.0
+    command: python manage.py run -h 0.0.0.0
     volumes:
       - ./services/web/:/usr/src/app/
       - static_volume:/home/app/web/project/static
@@ -27,8 +27,6 @@ services:
     - POSTGRES_PASSWORD=password
     - POSTGRES_DB=example
     - TZ="Europe/Moscow"
-    command:
-      - /bin/bash -c "rm -rf /etc/localtime && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && date +%Z"
   coap:
     build: ./services/coap
     command: python manage.py run
