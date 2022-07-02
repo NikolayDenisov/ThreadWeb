@@ -27,14 +27,14 @@ def staticfiles(filename):
 def hello_world():
     data = last_day()
     timestamps = list(list(zip(*data))[0])
-    date_strings = [d.strftime('%d/%m/%Y, %H:%M:%S")') for d in timestamps]
+    date_strings = [d.strftime('%d/%m/%Y, %H:%M:%S') for d in timestamps]
     temps = list(list(zip(*data))[1])
     return render_template('chart.html', values=temps, labels=date_strings)
 
 
 def last_day():
     query = "SELECT time_bucket('1 hours', time) AS one_hour," \
-            "avg(temperature) FROM sensor_data " \
+            "ROUND(AVG(temperature)::numeric, 2) FROM sensor_data " \
             "WHERE time > now () - INTERVAL '1 day' GROUP BY one_hour ORDER BY one_hour;"
     with psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"]) as conn:
         cursor = conn.cursor()
