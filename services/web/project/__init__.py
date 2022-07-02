@@ -1,6 +1,6 @@
-from flask import Flask, jsonify, send_from_directory
-from flask_sqlalchemy import SQLAlchemy
 import psycopg2
+from flask import Flask, send_from_directory, render_template
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object("project.config.Config")
@@ -25,18 +25,20 @@ def staticfiles(filename):
 
 @app.route("/")
 def hello_world():
-    return jsonify(hello="world")
+    data = last_day()
+    timestamps = list(list(zip(*data))[0])
+    date_strings = [d.strftime('%d/%m/%Y, %H:%M:%S")') for d in timestamps]
+    temps = list(list(zip(*data))[1])
+    return render_template('chart.html', values=temps, labels=date_strings)
 
 
-@app.route('/sensorlog')
-def sensorlog():
-    query = "SELECT * FROM sensor_data;"
+def last_day():
+    query = "SELECT time_bucket('1 hours', time) AS one_hour," \
+            "avg(temperature) FROM sensor_data " \
+            "WHERE time > now () - INTERVAL '1 day' GROUP BY one_hour ORDER BY one_hour;"
     with psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"]) as conn:
         cursor = conn.cursor()
         cursor.execute(query)
-        text = '<ul>'
-        for row in cursor.fetchall():
-            text += '<li>' + '{} {} {}'.format(row[0].strftime("%d/%m/%Y, %H:%M:%S"), row[1], row[2]) + '</li>'
+        data = cursor.fetchall()
         cursor.close()
-        text += '</ul>'
-    return text
+    return data
