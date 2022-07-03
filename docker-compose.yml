@@ -46,6 +46,9 @@ services:
     depends_on:
       - web
       - coap
+  api-gateway:
+    build: ./sevice/api-gateway
+
 volumes:
   postgres_data:
   static_volume:
