@@ -2,7 +2,7 @@ import psycopg2
 import config
 
 from table_init import query_create_db, timescale_extension_init, query_create_sensors_table, \
-    query_create_sensordata_table, query_create_hypertable
+    query_create_sensordata_table, query_create_hypertable, query_set_timezone
 
 
 def create_tables():
@@ -11,6 +11,7 @@ def create_tables():
         cursor.execute(query_create_sensors_table)
         cursor.execute(query_create_sensordata_table)
         cursor.execute(query_create_hypertable)
+        cursor.execute(query_set_timezone.format(config.Config.SQLALCHEMY_DATABASE_TIMEZONE))
         conn.commit()
 
 

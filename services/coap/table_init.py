@@ -15,3 +15,5 @@ query_create_sensordata_table = "CREATE TABLE IF NOT EXISTS sensor_data (" \
 query_create_hypertable = "SELECT create_hypertable('sensor_data', 'time');"
 
 query_change_user_password = f'ALTER USER postgres WITH PASSWORD "password";'
+
+query_set_timezone = "SET timezone TO '{}';"
