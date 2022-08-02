@@ -17,6 +17,7 @@ class ActiveThing(resource.Resource):
     async def render_post(request):
         logging.info(request.remote.hostinfo)
         payload = request.payload.decode('utf8')
+        print(f'payload {payload}')
         # parse_payload(payload)
         logging.info(payload)
         text = "Hello world"
@@ -37,13 +38,17 @@ class ThingWrite(resource.Resource, resource.PathCapable):
             return aiocoap.Message(code=aiocoap.UNAUTHORIZED)
         dev_ip_addr = request.remote.sockaddr[0]
         uri_query = request.opt.uri_query
-        logging.info(f'Receive token {device_token}, dev_ip_addr {dev_ip_addr}, uri_query {uri_query}')
+        logging.debug(f'Receive token {device_token}, dev_ip_addr {dev_ip_addr}, uri_query {uri_query}')
         payload = request.payload.decode('utf8')
         # convert string to  object
         json_object = json.loads(payload)
         for data in json_object['values']:
             if data['key'] == 'temp':
-                write_temp(data['value'])
+                temp = data['value']
+            elif data['key'] == 'eui64':
+                eui64 = data['value']
+        if temp and eui64:
+            write_temp(eui64=eui64, temp=temp)
         return aiocoap.Message(code=aiocoap.CREATED,
                                payload=payload.encode('utf8'))
 

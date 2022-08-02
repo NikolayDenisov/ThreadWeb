@@ -8,6 +8,7 @@ query_create_sensors_table = "CREATE TABLE IF NOT EXISTS sensors (id SERIAL PRIM
 query_create_sensordata_table = "CREATE TABLE IF NOT EXISTS sensor_data (" \
                                 "time TIMESTAMPTZ NOT NULL," \
                                 "sensor_id INTEGER," \
+                                "eui64 VARCHAR(50)," \
                                 "temperature DOUBLE PRECISION," \
                                 "FOREIGN KEY (sensor_id) REFERENCES sensors (id)" \
                                 ");"

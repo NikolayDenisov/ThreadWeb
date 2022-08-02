@@ -15,12 +15,13 @@ def create_tables():
         conn.commit()
 
 
-def write_temp(payload):
+def write_temp(eui64, temp):
+    print(f'eui64 = {eui64} payload={temp}')
     with psycopg2.connect(config.Config.SQLALCHEMY_DATABASE_URI) as conn:
         try:
             cursor = conn.cursor()
-            sql_data_insert = "INSERT INTO sensor_data(time, sensor_id, temperature) VALUES(now(), 1, %s);"
-            cursor.execute(sql_data_insert, (payload,))
+            sql_data_insert = "INSERT INTO sensor_data(time, eui64, temperature) VALUES(now(), %s, %s);"
+            cursor.execute(sql_data_insert, (eui64, temp,))
         except Exception as error:
             print(error)
         conn.commit()
