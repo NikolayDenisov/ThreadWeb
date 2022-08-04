@@ -33,6 +33,19 @@ def hello_world():
     return render_template('chart.html', values=temps, labels=date_strings)
 
 
+@app.route("/dashboard")
+def dashboard():
+    eui64 = 'F4:CE:36:86:38:EC'
+    data = last_day(eui64)
+    timestamps = list(list(zip(*data))[0])
+    date_strings = [d.strftime('%d/%m/%Y, %H:%M:%S') for d in timestamps]
+    temps = list(list(zip(*data))[1])
+    return render_template('dashboard.html', values=temps, labels=date_strings)
+
+@app.route("/devices")
+def devices():
+    return render_template('devices.html')
+
 def last_day(eui64):
     query = "SELECT time_bucket('1 hours', time) AS one_hour," \
             "ROUND(AVG(temperature)::numeric, 2) FROM sensor_data " \

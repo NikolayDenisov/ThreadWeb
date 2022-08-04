@@ -1,0 +1,26 @@
+<html>
+<head>
+    {% block head %}
+    <meta charSet="UTF-8">
+    <title>{% block title %}{% endblock %} Sinbiot</title>
+    <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
+    <script src="static/js/chart.min.js"></script>
+    {% endblock head %}
+</head>
+<body>
+{% block body %}
+<div id="__next">
+    <div class="css-v5vxs4">
+        {% block header %}
+        {% endblock %}
+        {% block main %}
+        {% endblock %}
+        {% block footer %}
+        {% endblock %}
+    </div>
+</div>
+{% endblock body %}
+</body>
+</html>
+{% block javascript %}
+{% endblock %}

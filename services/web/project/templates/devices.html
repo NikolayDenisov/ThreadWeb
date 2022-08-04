@@ -1,0 +1,284 @@
+{% extends "base.html" %}
+{% block title %}Monitoring{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="static/css/table.css"/>
+{% endblock %}
+{% block body %}
+{% include "header.html" %}
+<div class="layout-wrapper css-uinsfl">
+        <div class="PrivateSwipeArea-root css-n2n0ek" style="width: 20px;"></div>
+        <div class="layout-content-wrapper MuiBox-root css-34b9xr">
+            <main class="layout-page-content css-zyg32b">
+                <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6 css-h2qpui">
+                    <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-15j76c0">
+                        <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-13nd69s">
+                            <div class="MuiCardHeader-root css-1islzvf">
+                                <div class="MuiCardHeader-content css-11qjisw"><span
+                                        class="MuiTypography-root MuiTypography-h6 MuiCardHeader-title css-84wjl2">Мои устройства</span>
+                                </div>
+                            </div>
+                            <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1c4frty">
+                                <div class="MuiTableContainer-root css-1w3zluf">
+                                    <table class="MuiTable-root MuiTable-stickyHeader css-y7nd7b"
+                                           aria-label="sticky table">
+                                        <thead class="MuiTableHead-root css-1y8o0b2">
+                                        <tr class="MuiTableRow-root MuiTableRow-head css-1gorvkl">
+                                            <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium css-be40bu"
+                                                scope="col">Имя
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium css-17bqav9"
+                                                scope="col">Местоположение
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium css-msmwzy"
+                                                scope="col">EUI64
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium css-msmwzy"
+                                                scope="col">Статус
+                                            </th>
+                                            <th class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium css-msmwzy"
+                                                scope="col">Density
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="MuiTableBody-root css-n2t27x">
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-1gorvkl" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                India
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                IN
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                1,324,171,354
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                3,287,263
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                402.82
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                China
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                CN
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                1,403,500,365
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                9,596,961
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                146.24
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                Italy
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                IT
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                60,483,973
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                301,340
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                200.72
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                United
+                                                States
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                US
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                327,167,434
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                9,833,520
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                33.27
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                Canada
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                CA
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                37,602,103
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                9,984,670
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                3.77
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                Australia
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                AU
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                25,475,400
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                7,692,024
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                3.31
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                Germany
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                DE
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                83,019,200
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                357,578
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                232.17
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                Ireland
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                IE
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                4,857,000
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                70,273
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                69.12
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                Mexico
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                MX
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                126,577,691
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                1,972,550
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                64.17
+                                            </td>
+                                        </tr>
+                                        <tr class="MuiTableRow-root MuiTableRow-hover css-dvkles" role="checkbox"
+                                            tabindex="-1">
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                Japan
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1vhm4pm">
+                                                JP
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                126,317,000
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                377,973
+                                            </td>
+                                            <td class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-9pg0vs">
+                                                334.20
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="MuiTablePagination-root css-d01wgx">
+                                    <div class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-tkgupb">
+                                        <div class="MuiTablePagination-spacer css-1mrwq1p"></div>
+                                        <p class="MuiTablePagination-selectLabel css-1rnchco" id=":r2s:">Rows per
+                                            page:</p>
+                                        <div variant="standard"
+                                             class="MuiInputBase-root MuiInputBase-colorPrimary css-41e7tq">
+                                            <div tabindex="0" role="button" aria-expanded="false"
+                                                 aria-haspopup="listbox"
+                                                 aria-labelledby=":r2s: :r2r:" id=":r2r:"
+                                                 class="MuiTablePagination-select MuiSelect-select MuiSelect-standard MuiInputBase-input css-a1m1w">
+                                                10
+                                            </div>
+                                            <input aria-hidden="true" tabindex="-1"
+                                                   class="MuiSelect-nativeInput css-1k3x8v3"
+                                                   value="10">
+                                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTablePagination-selectIcon MuiSelect-icon MuiSelect-iconStandard css-tbgxpt"
+                                                 focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                 data-testid="ArrowDropDownIcon">
+                                                <path d="M7 10l5 5 5-5z"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="MuiTablePagination-displayedRows css-196rrgv">1–10 of 15</p>
+                                        <div class="MuiTablePagination-actions">
+                                            <button class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-colorInherit MuiIconButton-sizeMedium css-bb1fx0"
+                                                    tabindex="-1" type="button" disabled=""
+                                                    aria-label="Go to previous page"
+                                                    title="Go to previous page">
+                                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv"
+                                                     focusable="false"
+                                                     aria-hidden="true" viewBox="0 0 24 24"
+                                                     data-testid="KeyboardArrowLeftIcon">
+                                                    <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-bb1fx0"
+                                                    tabindex="0" type="button" aria-label="Go to next page"
+                                                    title="Go to next page">
+                                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv"
+                                                     focusable="false"
+                                                     aria-hidden="true" viewBox="0 0 24 24"
+                                                     data-testid="KeyboardArrowRightIcon">
+                                                    <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path>
+                                                </svg>
+                                                <span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

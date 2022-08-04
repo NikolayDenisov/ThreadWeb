@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Monitoring{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block body %}
+{% include "header.html" %}
+<main class="layout-page-content css-zyg32b">
+            <div class="css-19sj0n3">
+                <div class="MuiGrid-container css-h2qpui">
+                    <div class="MuiGrid-item css-15j76c0">
+                        <h5 class="css-78ietm">
+                            <a class="css-mk5kn8" href="https://github.com/reactchartjs/react-chartjs-2"
+                               target="_blank">React ChartJS 2
+                            </a>
+                        </h5>
+                        <p class="css-19cqx3h">React wrapper for Chart.js</p>
+                    </div>
+                    <div class="MuiGrid-item css-15j76c0">
+                        <div class="MuiCard-root css-13nd69s">
+                            <div class="css-1islzv">
+                                <div class="css-11qjisw">
+                                    <span class="css-84wjl2">Среднечасовая температура</span>
+                                    <span class="css-lemk0a">Встроенный датчик температуры nrf52840</span>
+                                </div>
+                            </div>
+                            <div class="css-12evlce">
+                                <canvas id="myChart" role="img" height="800" width="2704"
+                                        style="display: block; box-sizing: border-box; height: 800px; width: 1352px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% include "footer.html" %}
+{% endblock %}
+
+{% block javascript %}
+<script>
+  const labels = [{% for item in labels %}
+                  "{{item}}",
+                  {% endfor %}];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Комната',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data : [{% for item in values %}
+                      {{item}},
+                    {% endfor %}],
+    }]
+  };
+
+    const config = {
+    type: 'line',
+    data: data,
+    options: {}
+    };
+    const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+{% endblock %}
