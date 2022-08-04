@@ -42,9 +42,27 @@ def dashboard():
     temps = list(list(zip(*data))[1])
     return render_template('dashboard.html', values=temps, labels=date_strings)
 
+
 @app.route("/devices")
 def devices():
     return render_template('devices.html')
+
+
+def connect(query: str):
+    with psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"]) as conn:
+        cursor = conn.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+    return data
+
+
+@app.route("/device-data")
+def device_data():
+    query = "SELECT * FROM sensor_data;"
+    data = connect(query)
+    return render_template('device-data.html')
+
 
 def last_day(eui64):
     query = "SELECT time_bucket('1 hours', time) AS one_hour," \
@@ -52,9 +70,5 @@ def last_day(eui64):
             "WHERE time > now () - INTERVAL '1 day' AND " \
             f"eui64='{eui64}'" \
             "GROUP BY one_hour ORDER BY one_hour;"
-    with psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"]) as conn:
-        cursor = conn.cursor()
-        cursor.execute(query)
-        data = cursor.fetchall()
-        cursor.close()
+    data = connect(query)
     return data
