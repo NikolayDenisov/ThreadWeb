@@ -18,26 +18,5 @@ def seed_db():
     db.session.commit()
 
 
-class Users:
-    id = ''
-    name = ''
-    email = ''
-    password = ''
-    active = ''
-    organization_roles = ''
-
-
-class Organization:
-    id = ''
-    name = ''
-
-
-class OrganizationRole:
-    user_id = ''
-    user = ''
-    organization_id = ''
-    organization = ''
-
-
 if __name__ == "__main__":
     cli()

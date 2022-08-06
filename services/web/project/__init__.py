@@ -13,9 +13,29 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(128), unique=True, nullable=False)
     active = db.Column(db.Boolean(), default=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+    roles = db.relationship('Role', secondary='user_roles')
 
     def __init__(self, email):
         self.email = email
+
+
+class Role(db.Model):
+    __tablename__ = 'roles'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(50), unique=True)
+
+
+class UserRoles(db.Model):
+    __tablename__ = 'user_roles'
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.Integer(), db.ForeignKey('users.id', ondelete='CASCADE'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('roles.id', ondelete='CASCADE'))
+
+
+class Organization:
+    id = ''
+    name = ''
 
 
 @app.route("/static/<path:filename>")
@@ -45,8 +65,9 @@ def dashboard():
 
 @app.route("/devices")
 def devices():
-    query = "SELECT * FROM sensor_data;"
-    return render_template('devices.html')
+    query = "SELECT * FROM sensors;"
+    data = connect(query)
+    return render_template('devices.html', sensors=data)
 
 
 def connect(query: str):
