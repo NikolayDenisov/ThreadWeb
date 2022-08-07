@@ -65,9 +65,12 @@ def dashboard():
 
 @app.route("/devices")
 def devices():
-    query = "SELECT * FROM sensors;"
+    query = "SELECT devices.id, device_type.vendor, devices.created_date, devices.eui64, devices.location  " \
+            "FROM devices " \
+            "INNER JOIN device_type ON devices.type_id = device_type.id;"
     data = connect(query)
-    return render_template('devices.html', sensors=data)
+    print(data)
+    return render_template('devices.html', data=data)
 
 
 def connect(query: str):
@@ -94,17 +97,3 @@ def last_day(eui64):
             "GROUP BY one_hour ORDER BY one_hour;"
     data = connect(query)
     return data
-
-
-class Sensor:
-    def __init__(self, eui64):
-        self.eu64 = eui64
-
-    def get_eui64(self):
-        return self.eu64
-
-    def read_value(self):
-        pass
-
-    def write_value(self):
-        pass
