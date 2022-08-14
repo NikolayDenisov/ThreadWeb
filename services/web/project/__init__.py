@@ -50,7 +50,7 @@ def hello_world():
     timestamps = list(list(zip(*data))[0])
     date_strings = [d.strftime('%d/%m/%Y, %H:%M:%S') for d in timestamps]
     temps = list(list(zip(*data))[1])
-    return render_template('chart.html', values=temps, labels=date_strings)
+    return render_template('dashboard.html', values=temps, labels=date_strings)
 
 
 @app.route("/dashboard")
