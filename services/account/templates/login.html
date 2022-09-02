@@ -732,13 +732,12 @@
                             <p class="MuiTypography-root MuiTypography-body2 css-19cqx3h">Please sign-in to your account
                                 and start the adventure</p>
                         </div>
-                        <form novalidate="" autocomplete="off">
+                        <form novalidate="" autocomplete="off" method="post" action="/login">
                             <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-nbxxrn">
                                 <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
                                        data-shrink="false" for="email" id="email-label">Email</label>
                                 <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13j0ouy">
-                                    <input aria-invalid="false" id="email" type="text"
-                                           class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9" value="">
+                                    <input aria-invalid="false" id="email" name="email" type="text" class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9" value="">
                                     <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
                                         <legend class="css-1ftyaf0"><span>Email</span></legend>
                                     </fieldset>
@@ -748,7 +747,7 @@
                                     class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
                                     data-shrink="false" for="auth-login-password">Password</label>
                                 <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-nhem73">
-                                    <input aria-invalid="false" id="auth-login-password" type="password"
+                                    <input aria-invalid="false" id="auth-login-password" name="password" type="password"
                                            class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1jyh38l"
                                            value="">
                                     <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1aearad">
@@ -777,8 +776,7 @@
                                     class="MuiTouchRipple-root css-w0pj6f"></span></span><span
                                     class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-azsy9a">Remember Me</span></label><a
                                     class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways MuiTypography-root MuiTypography-body2 css-lou2qq"
-                                    href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/pages/auth/forgot-password-v1/">Forgot
-                                Password?</a></div>
+                                    href="/forgot-password">Forgot Password?</a></div>
                             <button class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root  css-1g8zgnz"
                                     tabindex="0" type="submit">Login<span class="MuiTouchRipple-root css-w0pj6f"></span>
                             </button>
@@ -786,7 +784,7 @@
                                     class="MuiTypography-root MuiTypography-body1 css-15up5iz">New on our platform?</p>
                                 <p class="MuiTypography-root MuiTypography-body1 css-azsy9a"><a
                                         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways MuiTypography-root MuiTypography-body1 css-hmte51"
-                                        href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/pages/auth/register-v1/">Create
+                                        href="/create">Create
                                     an account</a>
                                 </p>
                             </div>
