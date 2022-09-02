@@ -30,3 +30,8 @@ def login_post():
 @auth.route('/forgot-password')
 def forgot_password():
     return render_template('forgot-password.html')
+
+
+@auth.route('/register')
+def register():
+    return render_template('register.html')
