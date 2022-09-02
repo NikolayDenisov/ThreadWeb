@@ -47,6 +47,8 @@ def staticfiles(filename):
 def hello_world():
     eui64 = 'F4:CE:36:86:38:EC'
     data = last_day(eui64)
+    if not data:
+        return render_template('dashboard.html', values=[0], labels=[0])
     timestamps = list(list(zip(*data))[0])
     date_strings = [d.strftime('%d/%m/%Y, %H:%M:%S') for d in timestamps]
     temps = list(list(zip(*data))[1])
