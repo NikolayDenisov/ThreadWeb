@@ -45,12 +45,12 @@
                     <p class="MuiTypography-root MuiTypography-body2 css-19cqx3h">Make your app management easy
                         and fun!</p>
                 </div>
-                <form novalidate="" autocomplete="off">
+                <form novalidate="" autocomplete="off" method="post" action="/register">
                     <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-nbxxrn">
                         <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
                                data-shrink="false" for="username" id="username-label">Username</label>
                         <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13j0ouy">
-                            <input aria-invalid="false" id="username" type="text"
+                            <input aria-invalid="false" id="username" name="username"  type="text"
                                    class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9" value="">
                             <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
                                 <legend class="css-1ftyaf0"><span>Username</span></legend>
@@ -61,7 +61,7 @@
                         <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
                                data-shrink="false" for=":r2:" id=":r2:-label">Email</label>
                         <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13j0ouy">
-                            <input aria-invalid="false" id=":r2:" type="email"
+                            <input aria-invalid="false" name="email"  id=":r2:" type="email"
                                    class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9" value="">
                             <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
                                 <legend class="css-1ftyaf0"><span>Email</span></legend>
@@ -72,7 +72,7 @@
                             class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
                             data-shrink="false" for="auth-register-password">Password</label>
                         <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-nhem73">
-                            <input aria-invalid="false" id="auth-register-password" type="password"
+                            <input aria-invalid="false" id="auth-register-password" name="password type="password"
                                    class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1jyh38l"
                                    value="">
                             <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1aearad">

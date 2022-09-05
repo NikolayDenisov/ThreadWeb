@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block body %}
+
+<div class="layout-wrapper css-v5vxs4">
+    <main class="layout-page-content css-zyg32b">
+        <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-13nd69s">
+            <div class="MuiTabs-root css-bk859y">
+                <div class="MuiTabs-scroller MuiTabs-fixed css-18jpbi7" style="overflow: hidden; margin-bottom: 0px;">
+                    <div aria-label="account-settings tabs" class="MuiTabs-flexContainer css-7sga7m" role="tablist">
+                        <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-9sa2vg"
+                                tabindex="0" type="button" role="tab" aria-selected="true"
+                                aria-controls="mui-p-15549-P-account" id="mui-p-15549-T-account">
+                            <div class="MuiBox-root css-70qvj9">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-oocc6j" focusable="false"
+                                     aria-hidden="true" viewBox="0 0 24 24" data-testid="AccountOutlineIcon">
+                                    <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z"></path>
+                                </svg>
+                                <span class="css-1t7o494">Account</span></div>
+                            <span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                        <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-9sa2vg" tabindex="-1"
+                                type="button" role="tab" aria-selected="false" aria-controls="mui-p-15549-P-security"
+                                id="mui-p-15549-T-security">
+                            <div class="MuiBox-root css-70qvj9">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-oocc6j" focusable="false"
+                                     aria-hidden="true" viewBox="0 0 24 24" data-testid="LockOpenOutlineIcon">
+                                    <path d="M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10A2,2 0 0,1 6,8H15V6A3,3 0 0,0 12,3A3,3 0 0,0 9,6H7A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,17A2,2 0 0,1 10,15A2,2 0 0,1 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17Z"></path>
+                                </svg>
+                                <span class="css-1t7o494">Security</span></div>
+                            <span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                        <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-9sa2vg" tabindex="-1"
+                                type="button" role="tab" aria-selected="false" aria-controls="mui-p-15549-P-info"
+                                id="mui-p-15549-T-info">
+                            <div class="MuiBox-root css-70qvj9">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-oocc6j" focusable="false"
+                                     aria-hidden="true" viewBox="0 0 24 24" data-testid="InformationOutlineIcon">
+                                    <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"></path>
+                                </svg>
+                                <span class="css-1t7o494">Info</span></div>
+                            <span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                        <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-9sa2vg" tabindex="-1"
+                                type="button" role="tab" aria-selected="false" aria-controls="mui-p-15549-P-billing"
+                                id="mui-p-15549-T-billing">
+                            <div class="MuiBox-root css-70qvj9">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-oocc6j" focusable="false"
+                                     aria-hidden="true" viewBox="0 0 24 24" data-testid="BookmarkOutlineIcon">
+                                    <path d="M17,18L12,15.82L7,18V5H17M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z"></path>
+                                </svg>
+                                <span class="css-1t7o494">Billing</span></div>
+                            <span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                        <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-9sa2vg" tabindex="-1"
+                                type="button" role="tab" aria-selected="false"
+                                aria-controls="mui-p-15549-P-notifications" id="mui-p-15549-T-notifications">
+                            <div class="MuiBox-root css-70qvj9">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-oocc6j" focusable="false"
+                                     aria-hidden="true" viewBox="0 0 24 24" data-testid="BellOutlineIcon">
+                                    <path d="M10 21H14C14 22.1 13.1 23 12 23S10 22.1 10 21M21 19V20H3V19L5 17V11C5 7.9 7 5.2 10 4.3V4C10 2.9 10.9 2 12 2S14 2.9 14 4V4.3C17 5.2 19 7.9 19 11V17L21 19M17 11C17 8.2 14.8 6 12 6S7 8.2 7 11V18H17V11Z"></path>
+                                </svg>
+                                <span class="css-1t7o494">Notifications</span></div>
+                            <span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                    </div>
+                    <span class="MuiTabs-indicator css-865gqf" style="left: 0px; width: 133.367px;"></span></div>
+            </div>
+            <div class="MuiTabPanel-root css-mp8pt5" role="tabpanel" aria-labelledby="mui-p-15549-T-account"
+                 id="mui-p-15549-P-account">
+                <div class="MuiCardContent-root css-12evlce">
+                    <form>
+                        <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6 css-h2qpui">
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1tx5m4">
+                                <div class="MuiBox-root css-70qvj9"><img
+                                        src="/demo/materialize-mui-react-nextjs-admin-template/demo-5/images/avatars/1.png"
+                                        alt="Profile Pic" class="css-13mhl1v">
+                                    <div class="MuiBox-root css-0"><label
+                                            class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-1v89yxy"
+                                            tabindex="0" role="button" for="account-settings-upload-image">Upload New
+                                        Photo<input hidden="" type="file" accept="image/png, image/jpeg"
+                                                    id="account-settings-upload-image"><span
+                                                class="MuiTouchRipple-root css-w0pj6f"></span></label>
+                                        <button class="MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-evexaf"
+                                                tabindex="0" type="button">Reset<span
+                                                class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                                        <p class="MuiTypography-root MuiTypography-caption css-eyweoi">Allowed PNG or
+                                            JPEG. Max size of 800K.</p></div>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 css-rpybyc">
+                                <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-feqhe6">
+                                    <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-1cnjdxr"
+                                           data-shrink="true" for=":r0:" id=":r0:-label">Username</label>
+                                    <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13j0ouy">
+                                        <input aria-invalid="false" id=":r0:" placeholder="johnDoe" type="text"
+                                               class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9"
+                                               value="johnDoe">
+                                        <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                            <legend class="css-1in441m"><span>Username</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 css-rpybyc">
+                                <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-feqhe6">
+                                    <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-1cnjdxr"
+                                           data-shrink="true" for=":r1:" id=":r1:-label">Name</label>
+                                    <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13j0ouy">
+                                        <input aria-invalid="false" id=":r1:" placeholder="John Doe" type="text"
+                                               class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9"
+                                               value="John Doe">
+                                        <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                            <legend class="css-1in441m"><span>Name</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 css-rpybyc">
+                                <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-feqhe6">
+                                    <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-1cnjdxr"
+                                           data-shrink="true" for=":r2:" id=":r2:-label">Email</label>
+                                    <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13j0ouy">
+                                        <input aria-invalid="false" id=":r2:" placeholder="johnDoe@example.com"
+                                               type="email" class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9"
+                                               value="johnDoe@example.com">
+                                        <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                            <legend class="css-1in441m"><span>Email</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 css-rpybyc">
+                                <div class="MuiFormControl-root MuiFormControl-fullWidth css-tzsjye"><label
+                                        class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-1cnjdxr"
+                                        data-shrink="true">Role</label>
+                                    <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1qg560">
+                                        <div tabindex="0" role="button" aria-expanded="false" aria-haspopup="listbox"
+                                             class="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-2aacz8">
+                                            Admin
+                                        </div>
+                                        <input aria-hidden="true" tabindex="-1"
+                                               class="MuiSelect-nativeInput css-1k3x8v3" value="admin">
+                                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-dv6cwf"
+                                             focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                             data-testid="ArrowDropDownIcon">
+                                            <path d="M7 10l5 5 5-5z"></path>
+                                        </svg>
+                                        <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                            <legend class="css-1in441m"><span>Role</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 css-rpybyc">
+                                <div class="MuiFormControl-root MuiFormControl-fullWidth css-tzsjye"><label
+                                        class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-1cnjdxr"
+                                        data-shrink="true">Status</label>
+                                    <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1qg560">
+                                        <div tabindex="0" role="button" aria-expanded="false" aria-haspopup="listbox"
+                                             class="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-2aacz8">
+                                            Active
+                                        </div>
+                                        <input aria-hidden="true" tabindex="-1"
+                                               class="MuiSelect-nativeInput css-1k3x8v3" value="active">
+                                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-dv6cwf"
+                                             focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                             data-testid="ArrowDropDownIcon">
+                                            <path d="M7 10l5 5 5-5z"></path>
+                                        </svg>
+                                        <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                            <legend class="css-1in441m"><span>Status</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 css-rpybyc">
+                                <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-feqhe6">
+                                    <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-1cnjdxr"
+                                           data-shrink="true" for=":r3:" id=":r3:-label">Company</label>
+                                    <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13j0ouy">
+                                        <input aria-invalid="false" id=":r3:" placeholder="ABC Pvt. Ltd." type="text"
+                                               class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9"
+                                               value="ABC Pvt. Ltd.">
+                                        <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                            <legend class="css-1in441m"><span>Company</span></legend>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-15j76c0">
+                                <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardWarning MuiAlert-standard css-ecf0j2"
+                                     role="alert">
+                                    <div class="MuiAlert-icon css-1l54tgj">
+                                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1cw4hi4"
+                                             focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                             data-testid="ReportProblemOutlinedIcon">
+                                            <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="MuiAlert-message css-1w0ym84">
+                                        <div class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-1ebxrir">
+                                            Your email is not confirmed. Please check your inbox.
+                                        </div>
+                                        <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-mk5kn8"
+                                           href="/">Resend Confirmation</a></div>
+                                    <div class="MuiAlert-action css-1mzcepu">
+                                        <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-15ly0nk"
+                                                tabindex="0" type="button" aria-label="close">
+                                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1cw4hi4"
+                                                 focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                 data-testid="CloseIcon">
+                                                <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path>
+                                            </svg>
+                                            <span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-15j76c0">
+                                <button class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-1grbv3g"
+                                        tabindex="0" type="button">Save Changes<span
+                                        class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                                <button class="MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root  css-xjeo1l"
+                                        tabindex="0" type="reset">Reset<span
+                                        class="MuiTouchRipple-root css-w0pj6f"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="MuiTabPanel-root css-mp8pt5" hidden="" role="tabpanel" aria-labelledby="mui-p-15549-T-security"
+                 id="mui-p-15549-P-security"></div>
+            <div class="MuiTabPanel-root css-mp8pt5" hidden="" role="tabpanel" aria-labelledby="mui-p-15549-T-info"
+                 id="mui-p-15549-P-info"></div>
+            <div class="MuiTabPanel-root css-mp8pt5" hidden="" role="tabpanel" aria-labelledby="mui-p-15549-T-billing"
+                 id="mui-p-15549-P-billing"></div>
+            <div class="MuiTabPanel-root css-mp8pt5" hidden="" role="tabpanel"
+                 aria-labelledby="mui-p-15549-T-notifications" id="mui-p-15549-P-notifications"></div>
+        </div>
+    </main>
+</div>
+{% endblock body %}

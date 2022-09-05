@@ -3,9 +3,10 @@
     {% block head %}
     <meta charSet="UTF-8">
     <title>{% block title %}{% endblock %} Sinbiot</title>
-    <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="static/css/login.css"/>
-    <link rel="stylesheet" type="text/css" href="static/css/register.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/account.css') }}"/>
     {% endblock head %}
 </head>
 <body>

@@ -46,7 +46,7 @@
                     <p class="MuiTypography-root MuiTypography-body2 css-19cqx3h">Please sign-in to your account
                         and start the adventure</p>
                 </div>
-                <form novalidate="" autocomplete="off" method="post" action="/login">
+                <form novalidate="" autocomplete="off" method="post" action="{{ url_for('auth.signin') }}">
                     <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-nbxxrn">
                         <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
                                data-shrink="false" for="email" id="email-label">Email</label>
@@ -99,7 +99,7 @@
                             class="MuiTypography-root MuiTypography-body1 css-15up5iz">New on our platform?</p>
                         <p class="MuiTypography-root MuiTypography-body1 css-azsy9a"><a
                                 class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways MuiTypography-root MuiTypography-body1 css-hmte51"
-                                href="/register">Create
+                                href="{{ url_for('auth.signup') }}">Create
                             an account</a>
                         </p>
                     </div>
