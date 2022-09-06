@@ -57,10 +57,10 @@ from flask_security import Security, hash_password, SQLAlchemySessionUserDatasto
 from database import db_session, init_db
 from models import User, Role
 
+app = Flask(__name__)
 
 def create_app():
     # Create app
-    app = Flask(__name__)
     app.config['DEBUG'] = True
 
     # Generate a nice key using secrets.token_urlsafe()
