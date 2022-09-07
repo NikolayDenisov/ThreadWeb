@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
-from flask_security import auth_required, hash_password, utils, login_user, login_required, logout_user
-from models import User
+from flask_security import auth_required, hash_password, utils, login_user, login_required, logout_user, current_user
+
+from services.account.app.models import User
 from . import app
 
 auth = Blueprint('auth', __name__)
@@ -8,6 +9,8 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/signin')
 def signin():
+    if current_user.is_authenticated:
+        return redirect(url_for('auth.profile'))
     return render_template('signin.html')
 
 
@@ -31,6 +34,8 @@ def restore_password():
 
 @auth.route('/signup')
 def signup():
+    if current_user.is_authenticated:
+        return redirect(url_for('auth.profile'))
     return render_template('signup.html')
 
 
