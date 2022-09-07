@@ -3,6 +3,7 @@ from flask_security import auth_required, hash_password, utils, login_user, logi
 
 from services.account.app.models import User
 from . import app
+from .database import db_session
 
 auth = Blueprint('auth', __name__)
 
@@ -16,11 +17,14 @@ def signin():
 
 @auth.route('/signin', methods=['POST'])
 def signin_post():
+    is_verified = False
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
     user = User.query.filter_by(email=email).first()
-    if not user and not utils.verify_password(password, user.password):
+    if user:
+        is_verified = utils.verify_password(password, user.password)
+    if not is_verified:
         flash('Неверный логин или пароль')
         return redirect(url_for('auth.signin'))
     login_user(user, remember=remember)
@@ -44,12 +48,15 @@ def signup_post():
     username = request.form.get('username')
     email = request.form.get('email')
     password = request.form.get('password')
-    if not app.security.datastore.find_user(email=email):
+    if app.security.datastore.find_user(email=email):
         flash('Пользователь уже зарегистрирован, авторизуйтесь')
         return redirect(url_for('auth.signin'))
-    # db.create_user(email=email, password=hash_password(password))
-    print(request.form, hash_password(password))
-    # return redirect(url_for('account.main'))
+    user = app.security.datastore.create_user(email=email, password=hash_password(password))
+    db_session.commit()
+    if user:
+        flash('Создан новый пользователь, авторизуйтесь')
+        return redirect(url_for('auth.signin'))
+    return redirect(url_for('auth.signup'))
 
 
 @auth.route('/profile')

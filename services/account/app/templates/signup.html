@@ -45,7 +45,7 @@
                     <p class="MuiTypography-root MuiTypography-body2 css-19cqx3h">Make your app management easy
                         and fun!</p>
                 </div>
-                <form novalidate="" autocomplete="off" method="post" action="/register">
+                <form novalidate="" autocomplete="off" method="post" action="{{ url_for('auth.signup') }}">
                     <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-nbxxrn">
                         <label class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
                                data-shrink="false" for="username" id="username-label">Username</label>
@@ -72,7 +72,7 @@
                             class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
                             data-shrink="false" for="auth-register-password">Password</label>
                         <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-nhem73">
-                            <input aria-invalid="false" id="auth-register-password" name="password type="password"
+                            <input aria-invalid="false" id="auth-register-password" name="password" type="password"
                                    class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1jyh38l"
                                    value="">
                             <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1aearad">
