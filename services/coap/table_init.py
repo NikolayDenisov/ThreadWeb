@@ -12,9 +12,9 @@ query_create_sensordata_table = "CREATE TABLE IF NOT EXISTS sensor_data (" \
                                 "temperature DOUBLE PRECISION," \
                                 "FOREIGN KEY (sensor_id) REFERENCES sensors (id)" \
                                 ");"
-#TODO Добавить группы сенсоров
-#TODO Добавить sensor_owner
-#TODO Добавить единицу измерения
+#TODO.md Добавить группы сенсоров
+#TODO.md Добавить sensor_owner
+#TODO.md Добавить единицу измерения
 '''
 Sensors
     sensor_id - уникальный id сенсора
