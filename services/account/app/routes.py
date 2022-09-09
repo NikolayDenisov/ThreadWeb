@@ -4,7 +4,7 @@ from flask_security import auth_required, hash_password, utils, login_user, logi
 from services.account.app.models import User
 from .database import db_session
 
-auth = Blueprint('auth', __name__)
+auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 
 @auth.route('/signin')
