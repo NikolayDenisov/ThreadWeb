@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template, request, redirect, flash, url_for
+from flask import Blueprint, render_template, request, redirect, flash, url_for, current_app
 from flask_security import auth_required, hash_password, utils, login_user, login_required, logout_user, current_user
 
 from services.account.app.models import User
-from . import app
 from .database import db_session
 
 auth = Blueprint('auth', __name__)
@@ -48,10 +47,10 @@ def signup_post():
     username = request.form.get('username')
     email = request.form.get('email')
     password = request.form.get('password')
-    if app.security.datastore.find_user(email=email):
+    if current_app.security.datastore.find_user(email=email):
         flash('Пользователь уже зарегистрирован, авторизуйтесь')
         return redirect(url_for('auth.signin'))
-    user = app.security.datastore.create_user(email=email, password=hash_password(password))
+    user = current_app.security.datastore.create_user(email=email, password=hash_password(password))
     db_session.commit()
     if user:
         flash('Создан новый пользователь, авторизуйтесь')
