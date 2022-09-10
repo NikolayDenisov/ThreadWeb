@@ -1,39 +1,44 @@
-{% extends "base.html" %}
-{% block title %}Login{% endblock %}
-{% block head %}
-{{ super() }}
-{% endblock %}
-{% block body %}
-<main class="layout-page-content css-zyg32b">
-    <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6 css-h2qpui">
-        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-15j76c0">
-            <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-13nd69s">
-                <div class="MuiCardHeader-root css-1lbhvlm">
-                    <div class="MuiCardHeader-content css-11qjisw"><span
-                            class="MuiTypography-root MuiTypography-h5 MuiCardHeader-title css-12ymoos">Search Filters</span>
-                    </div>
-                </div>
-                <div class="MuiCardContent-root css-12evlce">
-                    <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6 css-h2qpui">
-                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 css-h3o6is">
-                            <div class="MuiFormControl-root MuiFormControl-fullWidth css-tzsjye"><label
-                                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
-                                    data-shrink="false" id="role-select">Select Role</label>
-                                <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-19x525l">
-                                    <div tabindex="0" role="button" aria-expanded="false" aria-haspopup="listbox"
-                                         aria-labelledby="role-select select-role" id="select-role"
-                                         class="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-2aacz8">
-                                        <span class="notranslate">​</span></div>
-                                    <input aria-hidden="true" tabindex="-1" class="MuiSelect-nativeInput css-1k3x8v3"
-                                           placeholder="Select Role" value="">
-                                    <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-dv6cwf"
-                                         focusable="false" aria-hidden="true" viewBox="0 0 24 24"
-                                         data-testid="ArrowDropDownIcon">
-                                        <path d="M7 10l5 5 5-5z"></path>
-                                    </svg>
-                                    <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
-                                        <legend class="css-1ftyaf0"><span>Select Role</span></legend>
-                                    </fieldset>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/users.css') }}"/>
+</head>
+<body>
+<div id="__next">
+    <div class="layout-wrapper css-v5vxs4">
+        <main class="layout-page-content css-zyg32b">
+            <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6 css-h2qpui">
+                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-15j76c0">
+                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-13nd69s">
+                        <div class="MuiCardHeader-root css-1lbhvlm">
+                            <div class="MuiCardHeader-content css-11qjisw"><span
+                                    class="MuiTypography-root MuiTypography-h5 MuiCardHeader-title css-12ymoos">Search Filters</span>
+                            </div>
+                        </div>
+                        <div class="MuiCardContent-root css-12evlce">
+                            <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6 css-h2qpui">
+                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 css-h3o6is">
+                                    <div class="MuiFormControl-root MuiFormControl-fullWidth css-tzsjye"><label
+                                            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1t0alks"
+                                            data-shrink="false" id="role-select">Select Role</label>
+                                        <div class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-19x525l">
+                                            <div tabindex="0" role="button" aria-expanded="false"
+                                                 aria-haspopup="listbox"
+                                                 aria-labelledby="role-select select-role" id="select-role"
+                                                 class="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-2aacz8">
+                                                <span class="notranslate">​</span></div>
+                                            <input aria-hidden="true" tabindex="-1"
+                                                   class="MuiSelect-nativeInput css-1k3x8v3"
+                                                   placeholder="Select Role" value="">
+                                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-dv6cwf"
+                                                 focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+                                                 data-testid="ArrowDropDownIcon">
+                                                <path d="M7 10l5 5 5-5z"></path>
+                                            </svg>
+                                            <fieldset aria-hidden="true"
+                                                      class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                                <legend class="css-1ftyaf0"><span>Select Role</span></legend>
+                                            </fieldset>
                                 </div>
                             </div>
                         </div>
@@ -423,9 +428,7 @@
                                                          skin="light" color="primary">GS
                                                     </div>
                                                     <div class="MuiBox-root css-p38jk0"><a
-                                                            class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-noWrap css-lv9ruy"
-                                                            href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">Galen
-                                                        Slixby</a><a
+                                                            class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-noWrap css-lv9ruy" href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">Galen Slixby</a><a
                                                             class="MuiTypography-root MuiTypography-caption MuiTypography-noWrap css-11pajau"
                                                             href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">@gslixby0</a>
                                                     </div>
@@ -704,6 +707,9 @@
                 </div>
             </div>
         </div>
+            </div>
+        </main>
     </div>
-</main>
-{% endblock body %}
+</div>
+</body>
+</html>

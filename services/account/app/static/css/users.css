@@ -1,3 +1,33 @@
+body, html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    color: rgba(76, 78, 100, 0.87);
+    font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.15px;
+    background-color: #F7F7F9;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+#__next {
+    height: 100%;
+}
+
+.css-v5vxs4 {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow: clip;
+}
+
 .css-zyg32b {
     -webkit-box-flex: 1;
     flex-grow: 1;
@@ -8,15 +38,16 @@
     margin-right: auto;
 }
 
-@media (min-width: 1440px) {
-    .css-zyg32b {
-        max-width: 1440px;
-    }
-}
 
 @media (min-width: 1200px) {
     .css-zyg32b {
         max-width: 100%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .css-zyg32b {
+        max-width: 1440px;
     }
 }
 
@@ -49,14 +80,15 @@
     flex: 1 1 auto;
 }
 
-.css-1lbhvlm .MuiCardHeader-title {
-    letter-spacing: 0.15px;
-}
 
 .css-1lbhvlm .MuiCardHeader-title {
     line-height: 1.6;
     font-weight: 500;
     font-size: 1.25rem;
+}
+
+.css-1lbhvlm .MuiCardHeader-title {
+    letter-spacing: 0.15px;
 }
 
 .css-12ymoos {
@@ -70,8 +102,31 @@
     display: block;
 }
 
+
+@media (min-width: 600px) {
+    .css-12ymoos {
+        font-size: 1.3118rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .css-12ymoos {
+        font-size: 1.4993rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .css-12ymoos {
+        font-size: 1.4993rem;
+    }
+}
+
 .css-1lbhvlm + .MuiCardContent-root, .css-1lbhvlm + .MuiCollapse-root .MuiCardContent-root {
     padding-top: 0px;
+}
+
+.css-12evlce:last-child {
+    padding-bottom: 24px;
 }
 
 .css-12evlce:last-of-type {
@@ -81,6 +136,8 @@
 .css-12evlce {
     padding: 1.25rem;
 }
+
+
 
 .css-13nd69s {
     background-color: rgb(255, 255, 255);
@@ -102,6 +159,34 @@
     max-width: 100%;
 }
 
+
+@media (min-width: 600px) {
+    .css-h3o6is {
+        flex-basis: 33.3333%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 33.3333%;
+    }
+}
+
+@media (min-width: 900px) {
+    .css-h3o6is {
+        flex-basis: 33.3333%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 33.3333%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .css-h3o6is {
+        flex-basis: 33.3333%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 33.3333%;
+    }
+}
+
 @media (min-width: 1536px) {
     .css-h3o6is {
         flex-basis: 33.3333%;
@@ -110,6 +195,7 @@
         max-width: 33.3333%;
     }
 }
+
 
 .css-tzsjye {
     display: inline-flex;
@@ -140,22 +226,6 @@
     border-radius: 8px;
 }
 
-.css-2aacz8.css-2aacz8.css-2aacz8 {
-    padding-right: 32px;
-}
-
-.css-2aacz8.MuiSelect-select {
-    min-width: 6rem !important;
-}
-
-.css-2aacz8.MuiSelect-select {
-    height: auto;
-    min-height: 1.4375em;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 .css-2aacz8 {
     appearance: none;
     user-select: none;
@@ -178,6 +248,23 @@
     padding: 16.5px 14px;
 }
 
+
+.css-2aacz8.css-2aacz8.css-2aacz8 {
+    padding-right: 32px;
+}
+
+.css-2aacz8.MuiSelect-select {
+    height: auto;
+    min-height: 1.4375em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.css-2aacz8.MuiSelect-select {
+    min-width: 6rem !important;
+}
+
 .css-1k3x8v3 {
     bottom: 0px;
     left: 0px;
@@ -188,9 +275,34 @@
     box-sizing: border-box;
 }
 
+.css-dv6cwf {
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentcolor;
+    flex-shrink: 0;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 7px;
+    top: calc(50% - 0.5em);
+    pointer-events: none;
+    color: rgba(76, 78, 100, 0.54);
+}
 
-.css-19x525l .MuiOutlinedInput-notchedOutline {
-    border-color: rgba(76, 78, 100, 0.22);
+.css-1ftyaf0 {
+    float: unset;
+    overflow: hidden;
+    display: block;
+    width: auto;
+    padding: 0px;
+    height: 11px;
+    font-size: 0.75em;
+    visibility: hidden;
+    max-width: 0.01px;
+    transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    white-space: nowrap;
 }
 
 .css-1ftyaf0 > span {
@@ -328,6 +440,10 @@
     overflow: hidden;
     min-width: 0%;
     border-color: rgba(0, 0, 0, 0.23);
+}
+
+.css-19x525l .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(76, 78, 100, 0.22);
 }
 
 
@@ -1062,6 +1178,43 @@
     max-width: 100%;
 }
 
+@media (min-width: 600px) {
+    .css-15j76c0 {
+        flex-basis: 100%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 900px) {
+    .css-15j76c0 {
+        flex-basis: 100%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .css-15j76c0 {
+        flex-basis: 100%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1536px) {
+    .css-15j76c0 {
+        flex-basis: 100%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 100%;
+    }
+}
+
+
 .Mui-resizeTriggers, .Mui-resizeTriggers > div, .contract-trigger:before {
     content: " ";
     display: block;
@@ -1360,3 +1513,25 @@
     font-size: 1.5rem;
 }
 
+.css-1t0alks {
+    font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4375em;
+    letter-spacing: 0.15px;
+    padding: 0px;
+    display: block;
+    transform-origin: left top;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 24px);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transform: translate(14px, 16px) scale(1);
+    transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    z-index: 1;
+    pointer-events: none;
+    color: rgba(76, 78, 100, 0.68);
+}
