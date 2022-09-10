@@ -3,8 +3,11 @@ from flask_security import auth_required, hash_password, utils, login_user, logi
 
 from services.account.app.models import User
 from .database import db_session
+from .models import User
 
 auth = Blueprint('auth', __name__, url_prefix='/auth')
+
+user = Blueprint('user', __name__, url_prefix='/user')
 
 
 @auth.route('/signin')
@@ -81,3 +84,11 @@ def users():
 def signout():
     logout_user()
     return redirect(url_for('auth.signin')) or request.referrer
+
+
+@user.route('/list', methods=['GET'])
+@login_required
+def user_list():
+    users = User.query.all()
+    print(users)
+    return render_template('user_list.html', users=users)

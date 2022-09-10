@@ -13,6 +13,7 @@ def create_app():
     # Setup Flask-Security
     user_datastore = SQLAlchemySessionUserDatastore(db_session, User, Role)
     app.security = Security(app, user_datastore)
-    from .routes import auth as auth_blueprint
+    from .routes import auth as auth_blueprint, user as user_blueprint
     app.register_blueprint(auth_blueprint)
+    app.register_blueprint(user_blueprint)
     return app
