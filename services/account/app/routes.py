@@ -90,5 +90,4 @@ def signout():
 @login_required
 def user_list():
     users = User.query.all()
-    print(users)
     return render_template('user_list.html', users=users)

@@ -1,3 +1,10 @@
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+}
+
 body, html {
     min-height: 100%;
 }
