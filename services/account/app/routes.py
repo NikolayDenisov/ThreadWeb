@@ -70,6 +70,12 @@ def home():
     return redirect(url_for('auth.profile'))
 
 
+@auth.route('/users')
+@auth_required()
+def users():
+    return render_template('user_list.html')
+
+
 @auth.route('/signout', methods=['GET'])
 @login_required
 def signout():
