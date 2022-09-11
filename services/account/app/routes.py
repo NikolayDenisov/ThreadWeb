@@ -61,22 +61,16 @@ def signup_post():
     return redirect(url_for('auth.signup'))
 
 
-@auth.route('/profile')
+@user.route('/profile')
 @auth_required()
 def profile():
     return render_template('profile.html')
 
 
-@auth.route("/")
+@user.route("/")
 @auth_required()
 def home():
-    return redirect(url_for('auth.profile'))
-
-
-@auth.route('/users')
-@auth_required()
-def users():
-    return render_template('user_list.html')
+    return redirect(url_for('user.profile'))
 
 
 @auth.route('/signout', methods=['GET'])
