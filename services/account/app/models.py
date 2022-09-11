@@ -25,7 +25,7 @@ class User(Base, UserMixin):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     email = Column(String(255), unique=True)
-    # name = Column(String(255), unique=True, nullable=True)
+    name = Column(String(255), nullable=True)
     username = Column(String(255), unique=True, nullable=True)
     password = Column(String(255), nullable=False)
     last_login_at = Column(DateTime())

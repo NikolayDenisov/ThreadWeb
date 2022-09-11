@@ -13,7 +13,7 @@ user = Blueprint('user', __name__, url_prefix='/user')
 @auth.route('/signin')
 def signin():
     if current_user.is_authenticated:
-        return redirect(url_for('auth.profile'))
+        return redirect(url_for('user.profile'))
     return render_template('signin.html')
 
 
@@ -30,7 +30,7 @@ def signin_post():
         flash('Неверный логин или пароль')
         return redirect(url_for('auth.signin'))
     login_user(user, remember=remember)
-    return redirect(url_for('auth.profile'))
+    return redirect(url_for('user.profile'))
 
 
 @auth.route('/restore_password')
@@ -41,7 +41,7 @@ def restore_password():
 @auth.route('/signup')
 def signup():
     if current_user.is_authenticated:
-        return redirect(url_for('auth.profile'))
+        return redirect(url_for('user.profile'))
     return render_template('signup.html')
 
 

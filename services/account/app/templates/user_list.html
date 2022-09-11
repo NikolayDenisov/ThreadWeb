@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/users.css') }}"/>
 </head>
 <body>
 <div id="__next">
     <div class="layout-wrapper css-v5vxs4">
+        {% include "header.html" %}
         <main class="layout-page-content css-zyg32b">
             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6 css-h2qpui">
                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-15j76c0">
@@ -430,9 +432,9 @@
                                                          skin="light" color="primary">GS
                                                     </div>
                                                     <div class="MuiBox-root css-p38jk0"><a
-                                                            class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-noWrap css-lv9ruy" href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">{{ user.name or "Nick" }}</a><a
+                                                            class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-noWrap css-lv9ruy" href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">{{ user.name or "Неизвестно" }}</a><a
                                                             class="MuiTypography-root MuiTypography-caption MuiTypography-noWrap css-11pajau"
-                                                            href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">{{"@" + user.username or "@nickd" }}</a>
+                                                            href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">{{"@" + user.username or "@Неизвестно" }}</a>
                                                     </div>
                                                 </div>
                                             </div>
