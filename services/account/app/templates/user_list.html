@@ -432,9 +432,9 @@
                                                          skin="light" color="primary">GS
                                                     </div>
                                                     <div class="MuiBox-root css-p38jk0"><a
-                                                            class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-noWrap css-lv9ruy" href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">{{ user.name or "Неизвестно" }}</a><a
+                                                            class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-noWrap css-lv9ruy" href="{{ url_for('user.profile') }}">{{ user.name or "Неизвестно" }}</a><a
                                                             class="MuiTypography-root MuiTypography-caption MuiTypography-noWrap css-11pajau"
-                                                            href="/demo/materialize-mui-react-nextjs-admin-template/demo-5/apps/user/view/1/">{{"@" + user.username or "@Неизвестно" }}</a>
+                                                            href="{{ url_for('user.profile') }}">{% if user.username %} {{"@" + user.username }} {% else %} {{ "@Неизвестно" }} {% endif %}</a>
                                                     </div>
                                                 </div>
                                             </div>
