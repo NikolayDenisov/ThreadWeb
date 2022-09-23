@@ -80,8 +80,28 @@ def signout():
     return redirect(url_for('auth.signin')) or request.referrer
 
 
-@user.route('/list', methods=['GET'])
+@user.route('/users', methods=['GET'])
 @login_required
 def user_list():
+    """
+    limit:integer Количество элементов в ответе (по умолчанию равно 20)
+    filter[email]:string	Email пользователя
+    filter[groups][]: array Группы пользователя
+    filter[status]: string Статус пользователя в системе.
+
+    :return:
+    """
+    args = request.args
+    limit = args.get("limit", default=None, type=None)
+    filter = args.get("filter", default=None, type=None)
     users = User.query.all()
     return render_template('user_list.html', users=users)
+
+
+@user.route('/<int:user_id>', methods=['GET'])
+@login_required
+def select_user_by_id(user_id):
+    find_user = current_app.security.datastore.find_user(id=user_id)
+    if find_user:
+        return render_template('profile.html', user=find_user)
+    return render_template('profile.html', user=find_user)
