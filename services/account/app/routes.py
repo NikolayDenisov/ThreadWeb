@@ -92,9 +92,12 @@ def user_list():
     :return:
     """
     args = request.args
-    limit = args.get("limit", default=None, type=None)
-    filter = args.get("filter", default=None, type=None)
-    users = User.query.all()
+    u_limit = args.get("limit", default=20, type=None)
+    u_filter = args.get("filter", default=None, type=None)
+    if u_filter:
+        users = User.query.filter_by().limit(u_limit)
+    else:
+        users = User.query.limit(u_limit)
     return render_template('user_list.html', users=users)
 
 
