@@ -18,6 +18,8 @@ class Config(object):
                                             SECURITY_PASSWORD_SALT_DEFAULT)
     # Specifies the path to the template for the user login page.
     SECURITY_LOGIN_USER_TEMPLATE = 'signin.html'
+    DOMAIN = 'sinbiot.ru'
+    PROJECT_NAME = 'sinbiot'
 
 
 class DevelopmentConfig(Config):
