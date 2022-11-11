@@ -1,78 +1,65 @@
 timescale_extension_init = "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;"
-query_create_db = "create database example;"
+query_create_db = "create database devices;"
 
-query_create_sensors_table = "CREATE TABLE IF NOT EXISTS sensors (id SERIAL PRIMARY KEY," \
-                             "type VARCHAR(50)," \
-                             "location VARCHAR(50));"
 
-query_create_sensordata_table = "CREATE TABLE IF NOT EXISTS sensor_data (" \
-                                "time TIMESTAMPTZ NOT NULL," \
-                                "sensor_id INTEGER," \
-                                "eui64 VARCHAR(50)," \
-                                "temperature DOUBLE PRECISION," \
-                                "FOREIGN KEY (sensor_id) REFERENCES sensors (id)" \
-                                ");"
-#TODO.md Добавить группы сенсоров
-#TODO.md Добавить sensor_owner
-#TODO.md Добавить единицу измерения
-'''
-Sensors
-    sensor_id - уникальный id сенсора
-    service_date - когда добавили сенсор
-    sensor_model - модель сенсор (nrf52840)
-    sensor_manufacturer - производитель
-    sensor_owner - кто добавил сенсор
-    location - где установлен датчик
-    time - время добавления сенсора
-
-Sensor_data
-    sensor_id
-    time - время добавления данных
-    unit - тип измерения(температура, влажность, напряжение)
-    value - данные замера
-Группы сенсоро
-    id
-    group_name
-'''
-
-query_create_devices_table = "CREATE TABLE IF NOT EXISTS devices (" \
+create_table_sensor = "CREATE TABLE IF NOT EXISTS sensor (" \
                              "id SERIAL PRIMARY KEY," \
-                             "type_id INTEGER," \
-                             "owner_id INTEGER," \
-                             "created_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP," \
-                             "FOREIGN KEY (type_id) REFERENCES device_type(id)," \
-                             "FOREIGN KEY(owner_id) REFERENCES users(id)," \
-                             "eui64 VARCHAR(50)," \
-                             "location VARCHAR(50));"
+                             "id_type INTEGER references sensor_type(id)," \
+                             "id_owner INTEGER references person(id)," \
+                             "code VARCHAR(20) UNIQUE," \
+                             "name VARCHAR(50)," \
+                             "description VARCHAR(80)," \
+                             "date_created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP" \
+                             ");"
 
-query_create_device_type_table = "CREATE TABLE IF NOT EXISTS device_type (" \
+create_table_sensor_type = "CREATE TABLE IF NOT EXISTS sensor_type (" \
                              "id SERIAL PRIMARY KEY," \
-                             "vendor VARCHAR(50)," \
-                             "model VARCHAR(50));"
+                             "name VARCHAR(30)," \
+                             "unit VARCHAR(15)," \
+                             "description VARCHAR(160)" \
+                             ");"
 
-query_create_device_data_table = "CREATE TABLE IF NOT EXISTS device_data (" \
-                                "created_date TIMESTAMPTZ NOT NULL," \
-                                "device_id INTEGER," \
-                                "FOREIGN KEY(device_id) REFERENCES devices(id)," \
+create_table_sensor_group = "CREATE TABLE IF NOT EXISTS sensor_group (" \
+                                  "id SERIAL PRIMARY KEY," \
+                                  "id_type INTEGER references sensor_type(id)," \
+                                  "code VARCHAR(20) UNIQUE," \
+                                  "name VARCHAR(50)" \
+                                  ");"
+
+create_table_sensor_group_members = "CREATE TABLE IF NOT EXISTS sensor_group_members (" \
+                                  "id SERIAL PRIMARY KEY," \
+                                  "FOREIGN KEY(group_id) REFERENCES sensor_group(id)," \
+                                  "FOREIGN KEY(sensor_id) REFERENCES sensor(id)" \
+                                  ");"
+
+create_table_measured_value = "CREATE TABLE IF NOT EXISTS measured_value (" \
+                                "id SERIAL PRIMARY KEY," \
+                                "FOREIGN KEY(id_sensor) REFERENCES sensor(id)," \
+                                "date_measured TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP UNIQUE" \
                                 "value DOUBLE PRECISION," \
-                                "unit INTEGER" \
+                                "unit VARCHAR(30)" \
                                 ");"
 
-query_create_device_group_table = "CREATE TABLE IF NOT EXISTS device_group (" \
-                                  "id SERIAL PRIMARY KEY," \
-                                  "code VARCHAR(20)," \
-                                  "group_name VARCHAR(50)" \
-                                  ");"
 
-query_create_device_group_members_table = "CREATE TABLE IF NOT EXISTS device_group_members (" \
-                                  "id SERIAL PRIMARY KEY," \
-                                  "group_id INTEGER," \
-                                  "device_id INTEGER," \
-                                  "FOREIGN KEY(group_id) REFERENCES device_group(id)," \
-                                  "FOREIGN KEY(device_id) REFERENCES devices(id)" \
-                                  ");"
+create_table_person = "CREATE TABLE IF NOT EXISTS person (" \
+                             "id SERIAL PRIMARY KEY," \
+                             "first_name VARCHAR(20)," \
+                             "last_name VARCHAR(20)," \
+                             "email VARCHAR(30)," \
+                             "description VARCHAR(80)" \
+                             ");"
 
-query_create_hypertable = "SELECT create_hypertable('device_data', 'time');"
+create_table_alert = "CREATE TABLE IF NOT EXISTS alert (" \
+                             "id SERIAL PRIMARY KEY," \
+                             "FOREIGN KEY(id_sensor) REFERENCES sensor(id)," \
+                             "threshold DOUBLE PRECISION," \
+                             "active BOOLEAN NOT NULL," \
+                             "alert_mode varchar(8)," \
+                             "mail_recipient VARCHAR(30)," \
+                             "mail_subject VARCHAR(50)" \
+                             ");"
+
+query_create_hypertable = "SELECT create_hypertable('measured_value', 'date_measured');"
 
 query_change_user_password = f'ALTER USER postgres WITH PASSWORD "password";'
 

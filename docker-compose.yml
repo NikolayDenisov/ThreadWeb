@@ -12,7 +12,7 @@ services:
     volumes:
       - static_volume:/home/app/web/project/static
     expose:
-      - 5000
+      - "5000"
     env_file:
       - ./.env.dev
     depends_on:
@@ -38,16 +38,13 @@ services:
     depends_on:
       - db
   nginx:
-    image: nginx:latest
+    build: ./services/nginx
     ports:
-      - 1337:80
+      - 80:80
       - 443:443
     restart: always
     volumes:
       - static_volume:/home/app/web/project/static
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
     depends_on:
       - web
       - coap
