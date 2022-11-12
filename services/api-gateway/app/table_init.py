@@ -1,6 +1,7 @@
-timescale_extension_init = "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;"
-query_create_db = "create database devices;"
+commands = []
 
+timescale_extension_init = "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;"
+query_create_db = "create database example;"
 
 create_table_sensor = "CREATE TABLE IF NOT EXISTS sensor (" \
                              "id SERIAL PRIMARY KEY," \
@@ -59,8 +60,23 @@ create_table_alert = "CREATE TABLE IF NOT EXISTS alert (" \
                              "mail_subject VARCHAR(50)" \
                              ");"
 
+
+
 query_create_hypertable = "SELECT create_hypertable('measured_value', 'date_measured');"
 
 query_change_user_password = f'ALTER USER postgres WITH PASSWORD "password";'
 
-query_set_timezone = "SET timezone TO '{}';"
+query_set_timezone = "SET timezone TO 'Asia/Yekaterinburg';"
+
+commands.append(timescale_extension_init)
+commands.append(query_create_db)
+commands.append(create_table_sensor)
+commands.append(create_table_sensor_group)
+commands.append(create_table_sensor_group_members)
+commands.append(create_table_sensor_type)
+commands.append(create_table_alert)
+commands.append(create_table_measured_value)
+commands.append(create_table_person)
+commands.append(query_create_hypertable)
+commands.append(query_change_user_password)
+commands.append(query_set_timezone)

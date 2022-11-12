@@ -1,17 +1,13 @@
-# pull official base image
-FROM python:3.9.5-slim-buster
+FROM python:3.10.1-slim-buster
+LABEL maintainer="Nikolay Denisov <nickdenisov@protonmail.com>"
 
-# set work directory
-WORKDIR /usr/src/api-gateway
+WORKDIR /code
 
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+COPY ./requirements.txt /code/requirements.txt
 
-# install dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt /usr/src/api-gateway/requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install -r /code/requirements.txt
 
-# copy project
-COPY . /usr/src/api-gateway/
+COPY ./app /code/app
+
+CMD [ "python", "manage.py" ]

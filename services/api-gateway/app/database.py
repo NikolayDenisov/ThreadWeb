@@ -1,6 +1,5 @@
 import psycopg2
 import config
-from datetime import datetime
 
 from table_init import query_create_db, timescale_extension_init, create_table_sensor, \
     create_table_measured_value, create_table_sensor_type, create_table_sensor_group, create_table_person, \
@@ -23,7 +22,7 @@ def create_tables() -> None:
         conn.commit()
 
 
-def insert(query: str):
+def insert(query: str) -> None:
     with psycopg2.connect(config.Config.SQLALCHEMY_DATABASE_URI) as conn:
         try:
             cursor = conn.cursor()
@@ -59,13 +58,6 @@ def insert_sensor_group_members(group_id: int, sensor_id: int) -> None:
     insert(sensor_group_insert)
 
 
-def insert_person(first_name: str, last_name: str, email: str, description: str):
-    person_insert = f'INSERT INTO \
-            sensor_group(first_name, last_name, email, description) \
-            VALUES({first_name}, {last_name}, {email}, {description});'
-    insert(person_insert)
-
-
 def insert_sensor_value(id_sensor: int, value: float, unit: int) -> None:
     value_insert = f'INSERT INTO \
             measured_value(id_sensor, date_measured, value, unit) \
@@ -73,16 +65,23 @@ def insert_sensor_value(id_sensor: int, value: float, unit: int) -> None:
     insert(value_insert)
 
 
-def add_sensor_group():
+def insert_person(first_name: str, last_name: str, email: str, description: str) -> None:
+    person_insert = f'INSERT INTO \
+            sensor_group(first_name, last_name, email, description) \
+            VALUES({first_name}, {last_name}, {email}, {description});'
+    insert(person_insert)
+
+
+def add_sensor_group() -> None:
     pass
 
 
-def add_sensor_group():
+def add_sensor_group() -> None:
     pass
 
 
 def create_db() -> None:
-    with psycopg2.connect(config.Config.SQLALCHEMY_DATABASE_URI) as conn:
-        cursor = conn.cursor()
-        cursor.execute(query_create_db)
-        cursor.execute(timescale_extension_init)
+    conn = psycopg2.connect(config.Config.SQLALCHEMY_DATABASE_URI)
+    cursor = conn.cursor()
+    cursor.execute(query_create_db)
+    cursor.execute(timescale_extension_init)

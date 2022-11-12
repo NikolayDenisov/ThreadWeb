@@ -7,8 +7,5 @@ echo "Waiting for TimescaleDB to be available..."
 #  sleep 0.1
 #done
 
-echo "TimescaleDB started"
-
-#python manage.py create_db
 python manage.py
 exec "$@"
