@@ -71,8 +71,8 @@ class Alert(Base):
     mail_subject = Column(String(50))
 
 
-@event.listens_for(MeasuredValue.__table__, "after_create")
-def receive_after_create(connection):
-    DDL(
-        f"SELECT create_hypertable('measured_value','date_measured');"
-    ).execute(connection)
+# @event.listens_for(MeasuredValue.__table__, "after_create")
+# def receive_after_create(connection):
+#     DDL(
+#         f"SELECT create_hypertable('measured_value','date_measured');"
+#     ).execute(connection)

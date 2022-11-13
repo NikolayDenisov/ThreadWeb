@@ -5,11 +5,11 @@ class SensorBase(BaseModel):
     description: str | None = None
 
 
-class ItemCreate(SensorBase):
+class SensorCreate(SensorBase):
     pass
 
 
-class Item(SensorBase):
+class Sensor(SensorBase):
     id: int
     id_owner: int
 

@@ -17,13 +17,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER="postgres"
-      - POSTGRES_PASSWORD="password"
-      - POSTGRES_DB="example"
-    command:
-      - "postgres"
-      - "-c"
-      - "password_encryption=md5"
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=example
   #  coap:
   #    build: ./services/coap
   #    command: python manage.py run
