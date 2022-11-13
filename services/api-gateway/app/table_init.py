@@ -29,14 +29,14 @@ create_table_sensor_group = "CREATE TABLE IF NOT EXISTS sensor_group (" \
 
 create_table_sensor_group_members = "CREATE TABLE IF NOT EXISTS sensor_group_members (" \
                                   "id SERIAL PRIMARY KEY," \
-                                  "FOREIGN KEY(group_id) REFERENCES sensor_group(id)," \
-                                  "FOREIGN KEY(sensor_id) REFERENCES sensor(id)" \
+                                  "group_id INTEGER REFERENCES sensor_group(id)," \
+                                  "sensor_id INTEGER REFERENCES sensor(id)" \
                                   ");"
 
 create_table_measured_value = "CREATE TABLE IF NOT EXISTS measured_value (" \
                                 "id SERIAL PRIMARY KEY," \
-                                "FOREIGN KEY(id_sensor) REFERENCES sensor(id)," \
-                                "date_measured TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP UNIQUE" \
+                                "id_sensor INTEGER REFERENCES sensor(id)," \
+                                "date_measured TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP," \
                                 "value DOUBLE PRECISION," \
                                 "unit VARCHAR(30)" \
                                 ");"
@@ -52,7 +52,7 @@ create_table_person = "CREATE TABLE IF NOT EXISTS person (" \
 
 create_table_alert = "CREATE TABLE IF NOT EXISTS alert (" \
                              "id SERIAL PRIMARY KEY," \
-                             "FOREIGN KEY(id_sensor) REFERENCES sensor(id)," \
+                             "id_sensor INTEGER REFERENCES sensor(id)," \
                              "threshold DOUBLE PRECISION," \
                              "active BOOLEAN NOT NULL," \
                              "alert_mode varchar(8)," \
@@ -70,13 +70,14 @@ query_set_timezone = "SET timezone TO 'Asia/Yekaterinburg';"
 
 commands.append(timescale_extension_init)
 commands.append(query_create_db)
-commands.append(create_table_sensor)
-commands.append(create_table_sensor_group)
-commands.append(create_table_sensor_group_members)
-commands.append(create_table_sensor_type)
-commands.append(create_table_alert)
-commands.append(create_table_measured_value)
-commands.append(create_table_person)
 commands.append(query_create_hypertable)
 commands.append(query_change_user_password)
 commands.append(query_set_timezone)
+commands.append(create_table_sensor_type)
+commands.append(create_table_person)
+commands.append(create_table_sensor)
+commands.append(create_table_sensor_group)
+commands.append(create_table_sensor_group_members)
+commands.append(create_table_alert)
+commands.append(create_table_measured_value)
+
