@@ -1,21 +1,22 @@
 from sqlalchemy import (Boolean, Column,
                         ForeignKey, Integer,
-                        String, TIMESTAMP,
+                        String, DateTime,
                         Float)
 from sqlalchemy import event, DDL
 
 from .database import Base
+from .persons import Person
 
 
 class Sensor(Base):
     __tablename__ = 'sensor'
     id = Column(Integer, primary_key=True, index=True)
     id_type = Column(Integer, ForeignKey("sensor_type.id"))
-    id_owner = Column(Integer, ForeignKey("person.id"))
+    id_owner = Column(Integer, ForeignKey(Person.id))
     code = Column(String(20))
     name = Column(String(50))
     description = Column(String(80))
-    date_created = Column(TIMESTAMP(timezone=True))
+    date_created = Column(DateTime(timezone=True))
 
 
 class SensorType(Base):
@@ -45,19 +46,8 @@ class MeasuredValue(Base):
     __tablename__ = 'measured_value'
     id = Column(Integer, primary_key=True, index=True)
     id_sensor = Column(Integer, ForeignKey("sensor.id"))
-    date_measured = Column(TIMESTAMP(timezone=True))
+    date_measured = Column(DateTime(timezone=True), primary_key=True)
     value = Column(Float(precision=2))
-
-
-class Person(Base):
-    __tablename__ = 'person'
-    id = Column(Integer, primary_key=True, index=True)
-    first_name = Column(String(20))
-    last_name = Column(String(20))
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    description = Column(String(160))
-    is_active = Column(Boolean, default=True)
 
 
 class Alert(Base):
@@ -71,8 +61,8 @@ class Alert(Base):
     mail_subject = Column(String(50))
 
 
-# @event.listens_for(MeasuredValue.__table__, "after_create")
-# def receive_after_create(connection):
-#     DDL(
-#         f"SELECT create_hypertable('measured_value','date_measured');"
-#     ).execute(connection)
+@event.listens_for(MeasuredValue.__table__, "after_create")
+def receive_after_create(target, connection, **kw):
+    DDL(
+        f"SELECT create_hypertable('{target}','date_measured');"
+    ).execute(connection)

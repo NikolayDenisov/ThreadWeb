@@ -3,3 +3,5 @@ pydantic
 uvicorn
 psycopg2-binary
 sqlalchemy
+alembic
+pydantic[email]

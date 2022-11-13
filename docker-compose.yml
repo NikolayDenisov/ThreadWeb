@@ -5,7 +5,7 @@ services:
   #    build: ./services/web
   #    command: gunicorn --bind 0.0.0.0:5000 manage:app
   #    volumes:
-  #      - static_volume:/home/app/web/project/static
+  #      - static_volume:/home/app/web/app/static
   #    expose:
   #      - "5000"
   #    env_file:
@@ -38,7 +38,7 @@ services:
       - 443:443
     restart: always
 #    volumes:
-#      - static_volume:/home/app/web/project/static
+#      - static_volume:/home/app/web/app/static
     depends_on:
       #        - web
       - coap
