@@ -19,6 +19,6 @@ RUN pip install -r requirements.txt
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/coap/entrypoint.sh"]
 
-# copy project
+# copy app
 COPY . /usr/src/coap/
 

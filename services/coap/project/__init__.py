@@ -4,7 +4,6 @@ import logging
 
 import aiocoap
 import aiocoap.resource as resource
-from database import insert_sensor_value
 
 
 class ActiveThing(resource.Resource):
@@ -17,7 +16,9 @@ class ActiveThing(resource.Resource):
     async def render_post(request):
         logging.info(request.remote.hostinfo)
         payload = request.payload.decode('utf8')
+        print(f'payload {payload}')
         logging.info(payload)
+        text = "Hello world"
         return aiocoap.Message(code=aiocoap.CREATED,
                                payload=text.encode('utf8'))
 
@@ -45,7 +46,7 @@ class ThingWrite(resource.Resource, resource.PathCapable):
             elif data['key'] == 'eui64':
                 eui64 = data['value']
         if temp and eui64:
-            insert_sensor_value(code=eui64, value=temp)
+            print(f'DENISOV {eui64} - {temp}')
         return aiocoap.Message(code=aiocoap.CREATED,
                                payload=payload.encode('utf8'))
 
