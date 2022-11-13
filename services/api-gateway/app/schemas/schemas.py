@@ -5,19 +5,54 @@ from pydantic import UUID4, BaseModel, EmailStr, Field, validator
 
 
 class SensorBase(BaseModel):
-    description: str | None = None
+    name: str | None = None
+    description: str
 
 
 class SensorCreate(SensorBase):
-    pass
+    id_type: int
+    id_owner: int
+    code: str
+
+
+class SensorTypeCreate(SensorBase):
+    unit: str
+
+
+class SensorGroupCreate(SensorBase):
+    unit: str
 
 
 class Sensor(SensorBase):
     id: int
+    id_type: int
     id_owner: int
+    code: str
+    date_created: datetime
 
     class Config:
         orm_mode = True
+
+
+class MeasuredValueBase(BaseModel):
+    id: int
+    id_sensor: int
+    date_measured: datetime
+    value: float
+
+    class Config:
+        orm_mode = True
+
+
+class MeasuredValueCreate(BaseModel):
+    id_sensor: int
+    date_measured: datetime
+    value: float
+    code: str
+
+
+class SensorGroupCreate(MeasuredValueBase):
+    unit: str
 
 
 class PersonBase(BaseModel):
