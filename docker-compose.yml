@@ -20,28 +20,29 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=example
-  #  coap:
-  #    build: ./services/coap
-  #    command: python manage.py run
-  #    volumes:
-  #      - ./services/web/:/usr/src/app/
-  #    ports:
-  #      - "5683:1222/udp"
-  #    env_file:
-  #      - ./.env.dev
-  #    depends_on:
-  #      - db
-  #  nginx:
-  #    build: ./services/nginx
-  #    ports:
-  #      - 80:80
-  #      - 443:443
-  #    restart: always
-  #    volumes:
-  #      - static_volume:/home/app/web/project/static
-  #    depends_on:
-  #      - web
-  #      - coap
+  coap:
+    build: ./services/coap
+    command: python manage.py run
+    volumes:
+      - ./services/web/:/usr/src/app/
+    ports:
+      - "5683:1222/udp"
+    #      env_file:
+    #        - ./.env.dev
+    depends_on:
+      - db
+  nginx:
+    build: ./services/nginx
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - static_volume:/home/app/web/project/static
+    depends_on:
+      #        - web
+      - coap
+      - api-gateway
   api-gateway:
     build: ./services/api-gateway
     command: uvicorn app.main:app --host 0.0.0.0
