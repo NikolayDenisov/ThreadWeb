@@ -85,7 +85,8 @@ class GetResources(resource.Resource):
 
 
 # logging setup
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
 logging.getLogger("coap-server").setLevel(logging.DEBUG)
 
 
