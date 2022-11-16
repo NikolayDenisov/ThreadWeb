@@ -1,17 +1,17 @@
 version: '3.7'
 
 services:
-  #  web:
-  #    build: ./services/web
-  #    command: gunicorn --bind 0.0.0.0:5000 manage:app
-  #    volumes:
-  #      - static_volume:/home/app/web/app/static
-  #    expose:
-  #      - "5000"
-  #    env_file:
-  #      - ./.env.dev
-  #    depends_on:
-  #      - db
+  web:
+    build: ./services/web
+    command: gunicorn --bind 0.0.0.0:5000 manage:app
+    volumes:
+      - static_volume:/code/static
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
   db:
     build: ./services/db
     ports:
@@ -58,6 +58,6 @@ services:
 #      - ./certbot/www/:/var/www/certbot/:rw
 #      - ./certbot/conf/:/etc/letsencrypt/:rw
 #    command: certonly --webroot --webroot-path=/var/www/certbot/ --email moddinshell@gmail.com --agree-tos --no-eff-email -d sinbiot.ru
-#volumes:
+volumes:
 #  postgres_data:
-#  static_volume:
+  static_volume:

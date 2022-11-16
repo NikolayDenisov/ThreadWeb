@@ -1,23 +1,13 @@
-# pull official base image
-FROM python:3.9.5-slim-buster
+FROM python:3.10.1-slim-buster
 
-# set work directory
-WORKDIR /usr/src/web
+WORKDIR /code
 
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+RUN apt-get update 
 
-# install system dependencies
-RUN apt-get update && apt-get install -y netcat
-
-# install dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt /usr/src/web/requirements.txt
-RUN pip install -r requirements.txt
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install -r  /code/requirements.txt
 
-# run entrypoint.sh
-ENTRYPOINT ["/usr/src/web/entrypoint.sh"]
+COPY ./ /code/
 
-# copy app
-COPY . /usr/src/web/
+ENTRYPOINT ["/code/entrypoint.sh"]
