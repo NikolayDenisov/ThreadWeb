@@ -47,8 +47,13 @@ class ThingWrite(resource.Resource, resource.PathCapable):
                 eui64 = data['value']
         if temp and eui64:
             print(f'DENISOV {eui64} - {temp}')
+            self.send_api_data('Hello DENISOV !!!!')
         return aiocoap.Message(code=aiocoap.CREATED,
                                payload=payload.encode('utf8'))
+
+    async def send_api_data(self, data: str):
+        asyncio.sleep(0)
+        print(f'{data}')
 
 
 class ThingRead(resource.Resource):
