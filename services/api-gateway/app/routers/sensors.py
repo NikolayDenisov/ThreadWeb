@@ -30,9 +30,9 @@ def create_measured_value(measured_value: schema_sensor.MeasuredValueCreate, db:
     return crud_sensors.create_measured_value(db=db, measured_value=measured_value)
 
 
-@router.post("/sensors/type/", response_model=schema_sensor.Sensor)
+@router.post("/sensors/type/", response_model=schema_sensor.SensorTypeCreate)
 def create_sensor_type(sensor_type: schema_sensor.SensorTypeCreate, db: Session = Depends(get_db)):
-    return crud_sensors.create_measured_value(db=db, sensor_type=sensor_type)
+    return crud_sensors.create_sensor_type(db=db, sensor_type=sensor_type)
 
 
 @router.post("/sensors/group/", response_model=schema_sensor.Sensor)

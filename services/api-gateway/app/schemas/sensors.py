@@ -7,6 +7,9 @@ class SensorBase(BaseModel):
     name: str | None = None
     description: str
 
+    class Config:
+        orm_mode = True
+
 
 class SensorCreate(SensorBase):
     id_type: int
