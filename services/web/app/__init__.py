@@ -1,9 +1,10 @@
 import psycopg2
 from flask import Flask, send_from_directory, render_template
-from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object("app.config.Config")
+cors = CORS(app, resources={r"/*": {"origins": "http://sinbiot.ru:8080"}})
 
 
 @app.route("/static/<path:filename>")

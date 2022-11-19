@@ -5,6 +5,7 @@ SECURITY_PASSWORD_SALT_DEFAULT = '146585145368132386173505678016728509634'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
 class Config(object):
     """Base config, uses staging database server."""
     SQLALCHEMY_TRACK_MODIFICATIONS = False

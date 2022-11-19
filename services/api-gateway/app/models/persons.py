@@ -1,5 +1,5 @@
-from sqlalchemy import Boolean, Column, Integer, String, DateTime, text, ForeignKey
-from sqlalchemy import event, DDL
+from sqlalchemy import Boolean, Column, Integer, String, DateTime, text, \
+    ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 
 from .database import Base
@@ -19,7 +19,9 @@ class Person(Base):
 class Token(Base):
     __tablename__ = 'token'
     id = Column(Integer, primary_key=True)
-    token = Column(UUID(as_uuid=False), server_default=text("uuid_generate_v4()"), unique=True, nullable=False,
+    token = Column(UUID(as_uuid=False),
+                   server_default=text("uuid_generate_v4()"), unique=True,
+                   nullable=False,
                    index=True)
     expires = Column(DateTime())
     person_id = Column(Integer, ForeignKey("person.id"))
