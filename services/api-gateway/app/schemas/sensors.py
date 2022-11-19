@@ -54,7 +54,9 @@ class MeasuredValueCreate(BaseModel):
     id_sensor: int
     date_measured: datetime
     value: float
-    code: str
+
+    class Config:
+        orm_mode = True
 
 
 class SensorAlert(BaseModel):

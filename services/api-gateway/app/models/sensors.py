@@ -47,7 +47,7 @@ class MeasuredValue(Base):
     __tablename__ = 'measured_value'
     id = Column(Integer, primary_key=True, index=True)
     id_sensor = Column(Integer, ForeignKey("sensor.id"))
-    date_measured = Column(DateTime(timezone=True), primary_key=True)
+    date_measured = Column(DateTime(timezone=True))
     value = Column(Float(precision=2))
 
 

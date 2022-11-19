@@ -70,3 +70,7 @@ def create_sensor_alert(db: Session, sensor_alert: schema_sensor.SensorAlert):
     db.commit()
     db.refresh(db_sensor_alert)
     return db_sensor_alert
+
+
+def get_values(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models_sensors.MeasuredValue).offset(skip).limit(limit).all()

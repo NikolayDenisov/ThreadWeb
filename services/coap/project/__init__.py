@@ -48,7 +48,6 @@ class ThingWrite(resource.Resource, resource.PathCapable):
             elif data['key'] == 'eui64':
                 eui64 = data['value']
         if temp and eui64:
-            print(f'DENISOV {eui64} - {temp}')
             await self.send_api_data(temp)
         return aiocoap.Message(code=aiocoap.CREATED,
                                payload=payload.encode('utf8'))
@@ -56,8 +55,7 @@ class ThingWrite(resource.Resource, resource.PathCapable):
     @staticmethod
     async def send_api_data(data: str):
         current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        params = {'id_sensor': '4', 'date_measured': current_datetime, 'value': data,
-                  'code': 'nrf52'}
+        params = {'id_sensor': '1', 'date_measured': current_datetime, 'value': data}
         async with aiohttp.ClientSession() as session:
             async with session.post('http://sinbiot.ru:8080/sensors/value/',
                                     json=params) as resp:

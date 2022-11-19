@@ -22,11 +22,8 @@ def read_sensors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db))
     return sensors
 
 
-@router.post("/sensors/value/", response_model=schema_sensor.Sensor)
+@router.post("/sensors/value/", response_model=schema_sensor.MeasuredValueCreate)
 def create_measured_value(measured_value: schema_sensor.MeasuredValueCreate, db: Session = Depends(get_db)):
-    db_sensor = crud_sensors.get_sensor_by_code(db, code=measured_value.code)
-    if not db_sensor:
-        raise HTTPException(status_code=400, detail="eui64 unregistered")
     return crud_sensors.create_measured_value(db=db, measured_value=measured_value)
 
 
@@ -37,12 +34,12 @@ def create_sensor_type(sensor_type: schema_sensor.SensorTypeCreate, db: Session 
 
 @router.post("/sensors/group/", response_model=schema_sensor.Sensor)
 def create_sensor_group(sensor_group: schema_sensor.SensorGroupCreate, db: Session = Depends(get_db)):
-    return crud_sensors.create_measured_value(db=db, sensor_group=sensor_group)
+    return crud_sensors.create_sensor_group(db=db, sensor_group=sensor_group)
 
 
 @router.post("/sensors/members/", response_model=schema_sensor.SensorGroupMembersCreate)
 def create_sensor_group(sensor_members: schema_sensor.SensorGroupCreate, db: Session = Depends(get_db)):
-    return crud_sensors.create_measured_value(db=db, sensor_members=sensor_members)
+    return crud_sensors.create_sensor_group_members(db=db, sensor_members=sensor_members)
 
 
 @router.post("/sensors/alert/", response_model=schema_sensor.SensorAlert)
@@ -50,9 +47,7 @@ def create_sensor_alert(sensor_alert: schema_sensor.SensorAlert, db: Session = D
     return crud_sensors.create_sensor_alert(db=db, sensor_alert=sensor_alert)
 
 
-@router.get("/sensor/{sensor_code}", response_model=schema_sensor.Sensor)
-def read_sensor(sensor_code: str, db: Session = Depends(get_db)):
-    db_sensor = crud_sensors.get_sensor_by_code(db, sensor_code=sensor_code)
-    if db_sensor is None:
-        raise HTTPException(status_code=404, detail="Sensor not found")
-    return db_sensor
+@router.get("/sensors/get_values", response_model=list[schema_sensor.MeasuredValueBase])
+def read_values(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    values = crud_sensors.get_values(db, skip=skip, limit=limit)
+    return values
