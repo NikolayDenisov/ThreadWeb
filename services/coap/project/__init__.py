@@ -3,7 +3,9 @@ import json
 import logging
 
 import aiocoap
+import aiohttp
 import aiocoap.resource as resource
+from datetime import datetime
 
 
 class ActiveThing(resource.Resource):
@@ -25,7 +27,7 @@ class ActiveThing(resource.Resource):
 
 class ThingWrite(resource.Resource, resource.PathCapable):
     """
-    https://coap.whoisdeveloper.ru/things/{THING_TOKEN}
+    https://coap.sinbiot.ru/things/{THING_TOKEN}
     Writes the records of data from the thing to the specified THING_TOKEN.
     Only alphanumeric characters and ".", "-", "" symbols are admited for the resource name "key".
     """
@@ -47,13 +49,19 @@ class ThingWrite(resource.Resource, resource.PathCapable):
                 eui64 = data['value']
         if temp and eui64:
             print(f'DENISOV {eui64} - {temp}')
-            self.send_api_data('Hello DENISOV !!!!')
+            await self.send_api_data(temp)
         return aiocoap.Message(code=aiocoap.CREATED,
                                payload=payload.encode('utf8'))
 
-    async def send_api_data(self, data: str):
-        asyncio.sleep(0)
-        print(f'{data}')
+    @staticmethod
+    async def send_api_data(data: str):
+        current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        params = {'id_sensor': '4', 'date_measured': current_datetime, 'value': data,
+                  'code': 'nrf52'}
+        async with aiohttp.ClientSession() as session:
+            async with session.post('http://sinbiot.ru:8080/sensors/value/',
+                                    json=params) as resp:
+                print(resp.status)
 
 
 class ThingRead(resource.Resource):

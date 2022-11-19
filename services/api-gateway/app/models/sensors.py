@@ -5,14 +5,14 @@ from sqlalchemy import (Boolean, Column,
 from sqlalchemy import event, DDL
 
 from .database import Base
-from .persons import Person
+from .users import User
 
 
 class Sensor(Base):
     __tablename__ = 'sensor'
     id = Column(Integer, primary_key=True, index=True)
     id_type = Column(Integer, ForeignKey("sensor_type.id"))
-    id_owner = Column(Integer, ForeignKey(Person.id))
+    id_owner = Column(Integer, ForeignKey(User.id))
     code = Column(String(20))
     name = Column(String(50))
     description = Column(String(80))
@@ -33,6 +33,7 @@ class SensorGroup(Base):
     id_type = Column(Integer, ForeignKey("sensor_type.id"))
     code = Column(String(20))
     name = Column(String(50))
+    description = Column(String(160))
 
 
 class SensorGroupMembers(Base):
@@ -60,9 +61,8 @@ class Alert(Base):
     mail_recipient = Column(String(30))
     mail_subject = Column(String(50))
 
-
-@event.listens_for(MeasuredValue.__table__, "after_create")
-def receive_after_create(target, connection, **kw):
-    DDL(
-        f"SELECT create_hypertable('{target}','date_measured');"
-    ).execute(connection)
+# @event.listens_for(MeasuredValue.__table__, "after_create")
+# def receive_after_create(target, connection, **kw):
+#     DDL(
+#         f"SELECT create_hypertable('value','date_measured');"
+#     ).execute(connection)

@@ -9,3 +9,5 @@ RUN pip install --upgrade pip
 RUN pip install -r /code/requirements.txt
 
 COPY ./app /code/app
+
+CMD [ "python", "main.py"]
