@@ -5,7 +5,7 @@ from sqlalchemy import (Boolean, Column,
 from sqlalchemy import event, DDL
 
 from .database import Base
-from .users import User
+from .persons import User
 
 
 class Sensor(Base):

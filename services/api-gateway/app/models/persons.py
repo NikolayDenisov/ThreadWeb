@@ -5,8 +5,8 @@ from sqlalchemy.dialects.postgresql import UUID
 from .database import Base
 
 
-class User(Base):
-    __tablename__ = 'user'
+class Person(Base):
+    __tablename__ = 'person'
     id = Column(Integer, primary_key=True, index=True)
     first_name = Column(String(20))
     last_name = Column(String(20))
@@ -22,4 +22,4 @@ class Token(Base):
     token = Column(UUID(as_uuid=False), server_default=text("uuid_generate_v4()"), unique=True, nullable=False,
                    index=True)
     expires = Column(DateTime())
-    user_id = Column(Integer, ForeignKey("user.id"))
+    person_id = Column(Integer, ForeignKey("person.id"))

@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import UUID4, BaseModel, EmailStr, Field, validator
 
 
-class UserBase(BaseModel):
+class PersonBase(BaseModel):
     email: EmailStr
     first_name: str
     last_name: str
@@ -13,11 +13,11 @@ class UserBase(BaseModel):
         orm_mode = True
 
 
-class UserCreate(UserBase):
+class PersonCreate(PersonBase):
     password: str
 
 
-class User(UserBase):
+class Person(PersonBase):
     id: int
     is_active: bool
 

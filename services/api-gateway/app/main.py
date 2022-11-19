@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from .models.database import engine, Base
-from .routers import users, sensors
+from .routers import persons, sensors
 
 Base.metadata.create_all(bind=engine)
 
