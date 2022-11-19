@@ -10,7 +10,7 @@ router = APIRouter()
 
 
 @router.post("/users/create", response_model=schema_user.UserCreate)
-def create_user(user: schema_user.User, db: Session = Depends(get_db)):
+def create_user(user: schema_user.UserCreate, db: Session = Depends(get_db)):
     db_user = crud_users.get_user_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")

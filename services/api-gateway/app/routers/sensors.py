@@ -8,7 +8,7 @@ from ..utils import get_db
 router = APIRouter()
 
 
-@router.post("/sensors/", response_model=schema_sensor.Sensor)
+@router.post("/sensors/create", response_model=schema_sensor.Sensor)
 def create_sensor(sensor: schema_sensor.SensorCreate, db: Session = Depends(get_db)):
     db_sensor = crud_sensors.get_sensor_by_code(db, code=sensor.code)
     if db_sensor:
@@ -16,7 +16,7 @@ def create_sensor(sensor: schema_sensor.SensorCreate, db: Session = Depends(get_
     return crud_sensors.create_sensor(db=db, sensor=sensor)
 
 
-@router.get("/sensors/create", response_model=list[schema_sensor.Sensor])
+@router.get("/sensors/", response_model=list[schema_sensor.Sensor])
 def read_sensors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     sensors = crud_sensors.get_sensors(db, skip=skip, limit=limit)
     return sensors
