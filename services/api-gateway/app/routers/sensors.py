@@ -48,3 +48,11 @@ def create_sensor_group(sensor_members: schema_sensor.SensorGroupCreate, db: Ses
 @router.post("/sensors/alert/", response_model=schema_sensor.SensorAlert)
 def create_sensor_alert(sensor_alert: schema_sensor.SensorAlert, db: Session = Depends(get_db)):
     return crud_sensors.create_sensor_alert(db=db, sensor_alert=sensor_alert)
+
+
+@router.get("/sensor/{sensor_code}", response_model=schema_sensor.Sensor)
+def read_sensor(sensor_code: str, db: Session = Depends(get_db)):
+    db_sensor = crud_sensors.get_sensor_by_code(db, sensor_code=sensor_code)
+    if db_sensor is None:
+        raise HTTPException(status_code=404, detail="Sensor not found")
+    return db_sensor
