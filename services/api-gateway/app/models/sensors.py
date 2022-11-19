@@ -5,14 +5,14 @@ from sqlalchemy import (Boolean, Column,
 from sqlalchemy import event, DDL
 
 from .database import Base
-from .persons import User
+from .persons import Person
 
 
 class Sensor(Base):
     __tablename__ = 'sensor'
     id = Column(Integer, primary_key=True, index=True)
     id_type = Column(Integer, ForeignKey("sensor_type.id"))
-    id_owner = Column(Integer, ForeignKey(User.id))
+    id_owner = Column(Integer, ForeignKey(Person.id))
     code = Column(String(20))
     name = Column(String(50))
     description = Column(String(80))
