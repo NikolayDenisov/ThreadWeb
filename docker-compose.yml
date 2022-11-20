@@ -5,13 +5,15 @@ services:
     build: ./services/web
     command: gunicorn --bind 0.0.0.0:5000 manage:app
     volumes:
-      - static_volume:/code/static
+      - static_volume:/code/app/static
     ports:
-      - "5000:5000"
+      - "5000:80"
     env_file:
       - ./.env.dev
     depends_on:
       - db
+    networks:
+      - sinbiot_network
   db:
     build: ./services/db
     ports:
@@ -37,21 +39,25 @@ services:
       - 80:80
       - 443:443
     restart: always
-#    volumes:
-#      - static_volume:/home/app/web/app/static
+    volumes:
+      - static_volume:/code/app/static
     depends_on:
-      #        - web
+      - web
       - coap
       - api-gateway
+    networks:
+      - sinbiot_network
   api-gateway:
     build: ./services/api-gateway
     command: uvicorn app.main:app --host 0.0.0.0
     ports:
-      - 8080:8000
+      - 8000:80
     depends_on:
       - db
     env_file:
       - ./.env.dev
+    networks:
+      - sinbiot_network
 #  certbot:
 #    image: certbot/certbot:latest
 #    volumes:
@@ -59,5 +65,7 @@ services:
 #      - ./certbot/conf/:/etc/letsencrypt/:rw
 #    command: certonly --webroot --webroot-path=/var/www/certbot/ --email moddinshell@gmail.com --agree-tos --no-eff-email -d sinbiot.ru
 volumes:
-#  postgres_data:
+  #  postgres_data:
   static_volume:
+networks:
+  sinbiot_network:
