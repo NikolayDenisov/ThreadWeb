@@ -57,7 +57,7 @@ class ThingWrite(resource.Resource, resource.PathCapable):
         current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         params = {'id_sensor': '1', 'date_measured': current_datetime, 'value': data}
         async with aiohttp.ClientSession() as session:
-            async with session.post('http://sinbiot.ru:8080/sensors/value/',
+            async with session.post('http://api.sinbiot.ru/sensors/value/',
                                     json=params) as resp:
                 print(resp.status)
 

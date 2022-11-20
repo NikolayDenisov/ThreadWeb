@@ -10,7 +10,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
-    "http://sinbiot.ru:5000",
+    "http://panel.sinbiot.ru",
 ]
 
 app.add_middleware(
